@@ -4,14 +4,14 @@
 <configuration>
 		
 	<typeAliases>
-	   <typeAlias alias="bdto" type="net.shopping.crud.BoardDTO"/>
-	   <typeAlias alias="ldto" type="net.shopping.crud.LoginDTO"/>
-	   <typeAlias alias="rdto" type="net.shopping.crud.reply.BoardReplyDTO"/>
+	
+	   <typeAlias alias="ldto" type="shopping.crud.LoginDTO"/>
+	 
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="config/mybatis/board.xml"/>
-		<mapper resource="config/mybatis/board_reply.xml" />
+	
+	
 		<mapper resource="config/mybatis/login.xml"/>
 	</mappers>
 </configuration>
