@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8" %>  
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
+
 	<meta charset="UTF-8">
 	<title>MUSINSA STORE</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,21 +21,22 @@
     <script src="http://malsup.github.com/jquery.cycle2.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#main_bar").load("../pages/main_bar.html");
+			$("#main_bar").load("../pages/main_bar.jsp");
 			$("#footer").load("../pages/footer.html");
 			});
-	</script>
+	</script> -->
 </head>
 <body>
 	<!-- main_menu -->
-	<div class="container-float">
 	<header class="main_menu">
-		<div id="main_bar"></div>
+		<div id="main_bar">
+			<c:import url="/main_bar.do"/>
+		</div>
 	</header>
-	</div>
-	<p>
+	
+	
 	<div class="contents">
 		<!-- main_slider -->
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -74,5 +78,22 @@
 	        </a>
 	    </div>
     </div>
+    <div class="container">
+    	<div class="first_wrap">
+    		<div class="first_wrap01">
+    			<a></a>
+    		</div>
+    	</div>
+    </div>
+    
+    
+    	<!-- footer -->
+	<footer>
+		<div id="footer">
+			<c:import url="/footer.do"/>
+		</div>
+	</footer>
+    
+    
 </body>
 </html>
