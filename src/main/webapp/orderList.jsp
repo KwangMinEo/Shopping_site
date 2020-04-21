@@ -8,79 +8,74 @@
 <meta charset="UTF-8">
 <title> [orderList.jsp] </title>
 	<style type="text/css">
-/* 	  *{ font-size: 18pt;  } */
-/* 	  a{ font-size: 18pt; text-decoration:none; color:blue ; font-family: Comic Sans MS; } */
-/* 	  a:hover{ font-size: 18pt; text-decoration:underline; color:green ; font-family: Comic Sans MS; } */
+     
 	</style>
 
-	<script type="text/javascript">	
-	  function clearText(){
-		document.myform.keyword.value="";
-		document.myform.keyword.focus();
-	  }
-	</script>
+	
 </head>
 <body>
 <div class="container">
+<form name="myform" action="">
 <font size="15" color="blue" >주문/결제</font>
- <table width=900  border=2  cellspacing=1>
-  <hr size="9" color="red" style="width:63.7%" align="left"><!-- 1.3rem  使方格里的字全部显示或者调节间距-->
-  <tr bgcolor="orange"><td colspan="3"><font size="5">상품정보</font></td></tr>
-  <c:forEach var="t" items="1">
-  <tr><td rowspan="5" align="center"><input type="checkbox" name="order_num" value=""></td></tr>
+ <table width=900  border=2  cellspacing=1 >
+  <hr size="9" color="grey" style="width:60%" align="left">
+  <tr bgcolor="orange">
+  <td colspan="3">
+  <font size="5">상품정보</font>
+  </td>
+  <td align="right"><input type="button" onclick="location.href='orderDelete.do?idx='" value="삭제"></td>
+  </tr>
+  <c:forEach var="order" items="product">
+  <tr><td rowspan="5" align="center"><input type="checkbox" name="product_id" value=""></td></tr>
   <tr>
-  <td rowspan="4" align="center">
-    <img  src="resources/images/ddd.gif">
+  <td rowspan="4"  align="center" >
+    <img  src="resources/images/musinsa_main_banner4.jpg" width="100%" height="200" name="upload_f">
+    
+<%--     <img  src="${pageContext.request.contextPath}/resources/upload/${dto.img_file_name}" width="200" height="150"> --%>
   </td>
   </tr>
-  <tr><td>상품이름:코끼리</td></tr>
-  <tr><td>상품색상:blue</td></tr>
-  <tr><td>상품사이즈:3</td></tr>
+  <tr><td colspan="2">상품이름:<input type="text" name="product_name" value="product_name" readonly></td></tr>
+  <tr><td colspan="2">상품색상:<input type="text" name="option1" value="product_color" ></td></tr>
+  <tr><td colspan="2">상품사이즈:<input type="text" name="option1" value="product_size" ></td></tr>
   <tr >
-  <td colspan="3" align="right">상품수량:4 &nbsp;&nbsp; 상품가격:5</td>
+  <td colspan="4" align="right">상품수량:<input type="text" name="count" value="1" >
+   &nbsp;&nbsp; 상품가격:<input type="text" name="price" value="product_desc" ></td>
   </tr>
   </c:forEach>
  </table><p>
  
- <hr size="2" color="red" style="width:63.7%" align="left" >
+ <hr size="2" color="grey" style="width:60%" align="left" >
 <!--  <img src="resources/images/jiantou.jpg" width="900px" height="80px"> -->
  <table width=900  border=1  cellspacing=0>
  <tr bgcolor="lightblue"><td colspan="2"><font size="5">배송정보</font></td></tr>
  <tr>
  <td>이름:</td>
- <td>Baijin</td>
+ <td><input type="text" name="user_name" value="user_name" ></td>
  </tr>
  <tr>
  <td>배송주소:</td>
- <td>asdafdfsf</td>
+ <td><input type="text" name="user_address1" value="user_address1" ></td>
  </tr>
  <tr>
  <td>상세주소:</td>
- <td>dsdsafdsfsaㅇㄴㅁㅇㅁㄹㄴㅇ</td>
+ <td><input type="text" name="user_address2" value="uwer_address2" ></td>
  </tr>
  <tr>
  <td>연락처:</td>
- <td>010-1234-5678</td>
+ <td><input type="text" name="user_phone" value="user_phone" ></td>
  </tr>
  
- 
- 
- 
- 
- 
- 
- 
    <tr align="center">
-  	 <td colspan="5">
-  	  <form name="myform2" action="">
-  	  	 총금액 : 
-  	  	 <input type="text" name="mtotal" size=10 value="total" readonly>
-  	  	 <input type="submit" value="결제">
-  	  	 <input type="reset" value="취소">
-  	  </form>
+  	 <td colspan="5" align="left">
+  	  	배송상황: <font color="red">주문중</font>
   	</td>
    </tr>
  </table>
+ 총금액 : 
+  	  	 <input type="text" name="price" size=10 value="100000" readonly>
+  	  	 <input type="submit" value="결제">
+  	  	 <input type="reset" value="취소">
+ </form>
 </div> 
 </body>
 </html>
