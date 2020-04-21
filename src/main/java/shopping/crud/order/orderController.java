@@ -22,7 +22,7 @@ public class orderController {
 	
 	@RequestMapping(value="/order.do", method = RequestMethod.GET)
 	public String order_insert(orderDTO dto) {
-		
+		//update
 		return "orderList";
 	}//end
 	
