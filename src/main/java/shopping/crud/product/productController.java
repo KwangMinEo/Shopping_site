@@ -43,7 +43,14 @@ public class productController {
 	}// List end
 
 	@RequestMapping(value = "/productDetail.do")
-	public String board_detail(@RequestParam("idx") int data, Model model) {
+	public String product_detail(@RequestParam("product_id") int data, Model model) {
+		productDTO dto = pdao.productDetail(data);
+		model.addAttribute("dto", dto);
+		return "productDetail";
+	}// Detail end
+	
+	@RequestMapping(value = "/zzim.do", method = RequestMethod.GET)
+	public String product_zzim(@RequestParam("product_id") int data, Model model) {
 		productDTO dto = pdao.productDetail(data);
 		model.addAttribute("dto", dto);
 		return "productDetail";
