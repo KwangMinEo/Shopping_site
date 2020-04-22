@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>무신사:제품상세보기</title>
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://malsup.github.com/jquery.cycle2.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
@@ -13,6 +16,26 @@
 		$("#category").load("main_bar.html");
 		$("#footer").load("footer.html");
 	});
+
+	$(".option1").onChange(function(){
+		$(".option2").value("");
+		});
+
+	$(".option2").onChange(function(){
+		var o1 = $(".option1").val();
+		var o2 = $(".option2").val();
+		if(o1==""||o1==null) return;
+		if(o2==""||O2==null) return;
+		$(".selectedTR p:last").after("
+				<tr>
+				<td><input name='product_name' value='${product_name}'>	</td>
+				<td><input name='product_option1' value=o1></td>
+				<td><input name='product_option2' value=o2></td>
+				<td><input type='number' name='count' value='1'></td>
+				<td><input name='product_price' value='${product_price}'></td>
+				</tr>
+				");
+		});
 </script>
 </head>
 <body>
@@ -20,14 +43,80 @@
 
 	<div class="container" id="productDetail">
 		<div class="row row-cols-2">
-			<div class="col">상품 대표 이미지</div>
-			<div class="col">주문서</div>
+			<div class="col"><img src="${dto.product_img1}" width="500" height="600"></div>
+			<div class="col">
+			
+			<table>
+			<tr>
+			<td colspan="2"><h1>${dto.product_name }</h1></td>
+			</tr>
+			<tr>
+			<th> 판매가격 </th>
+			<td> ${dto.product_price}</td>			
+			</tr>
+			<tr>
+			<th> 적립금 </th>
+			<td> 1% 적립</td>			
+			</tr>
+			<tr>
+			<th> 배송비 </th>
+			<td> 무료</td>			
+			</tr>
+			<tr>
+			<th> 당일발송 </th>
+			<td> 모든 옵션 가능</td>			
+			</tr>
+			<tr>
+			<td colspan="2">옵션 선택</td>
+			</tr>
+			<tr>
+			<th> 옵션1 </th>
+			<td><select class="option1" name="option1" size=20>
+				<option value="">---[필수]색상을 선택하세요---</option>
+				<c:forEach items="colorOption">
+				<option value="${colorOption }"> ${colorOption } </option>
+				</c:forEach>
+			</select> </td>			
+			</tr>
+			<tr>
+			<th> 옵션2 </th>
+				<td><select class="option2" name="option2" size=20>
+				<option value="">---[필수]사이즈를 선택하세요---</option>
+				<c:forEach items="sizeOption">
+				<option value="${sizeOption }"> ${sizeOption } </option>
+				</c:forEach>
+			</select> </td>			
+			</tr>
+			</table>
+			<form name="productSelected">
+			<table class="selectedTR">
+			<tr></tr>
+			</table>
+			
+			</form>
+			
+			
+			</div>
 
 		</div>
-		<div class="row row-cols-1" id="product_info"></div>
-		<div class="row row-cols-1" id="product_review"></div>
+		<div class="row row-cols-1" id="product_info">
+		
+		
+		</div>
+		
+		<div class="row row-cols-1" id="product_review">
+		
+		
+		
+		</div>
 
-		<div class="row row-cols-1" id="product_review"></div>
+		<div class="row row-cols-1" id="product_question">
+		
+		
+		
+		
+		
+		</div>
 
 
 

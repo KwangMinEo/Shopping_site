@@ -45,7 +45,12 @@ public class productController {
 	@RequestMapping(value = "/productDetail.do")
 	public String product_detail(@RequestParam("product_id") int data, Model model) {
 		productDTO dto = pdao.productDetail(data);
+		String[] colorOption = dto.getProduct_color().split(",");
+		String[] sizeOption = dto.getProduct_size().split(",");
+		
 		model.addAttribute("dto", dto);
+		model.addAttribute("colorOption", colorOption);
+		model.addAttribute("sizeOption", sizeOption);
 		return "productDetail";
 	}// Detail end
 	

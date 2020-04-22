@@ -30,7 +30,7 @@ create table product(
 --order table
 drop table order_detail;
 create table order_detail(
- opk_num number primary key,
+ opk_num number primary key, --sequence
  order_num varchar(20) not null,
  user_id varchar2(20) not null,
  product_id varchar2(20) not null,
@@ -51,7 +51,7 @@ create table order_detail(
 --product review table
 drop table product_review;
 create table product_review(
- review_num number primary key,
+ review_num number primary key, --sequence
  product_id varchar2(20) not null,
  user_id varchar2(20) not null,
  content varchar2(2000) not null,
@@ -82,7 +82,7 @@ create table product_quest_rep(
 drop table zzim;
 create table zzim(
  user_id varchar2(20) not null,
- zzim_num number primary key,
+ zzim_num number primary key, --sequence
  product_id varchar2(20) not null,
  option1 varchar2(20),
  option2 varchar2(20),
