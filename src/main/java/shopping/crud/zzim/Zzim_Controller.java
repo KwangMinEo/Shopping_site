@@ -32,6 +32,13 @@ public class Zzim_Controller {
 		return "zzimList";  
 	}//end
 	
+	@RequestMapping("/zzimInsert.do")
+	public String zzim_insert(ZzimDTO dto) {
+		zzimDAO.dbInsertZzim(dto);
+		
+	  return "zzimList";
+	}//end
+	
 	@RequestMapping("/zzimList.do")
 	public String zzim_select(HttpServletRequest request, Model model) {
 		List<ZzimDTO> list = zzimDAO.dbSelect("aa");

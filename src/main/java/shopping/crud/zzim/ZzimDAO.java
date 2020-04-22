@@ -14,7 +14,8 @@ public class ZzimDAO {
 	@Autowired
 	SqlSessionTemplate temp;
 		
-	public void dbInsert_join(ZzimDTO dto) {
+	public void dbInsertZzim(ZzimDTO dto) {
+		temp.insert("Zzim.insertZzim",dto);
 	}//end
 	
 	public List<ZzimDTO> dbSelect(String id) {
