@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
+
 @Repository
 public class orderDAO {
 	@Autowired
@@ -20,10 +22,10 @@ public class orderDAO {
 		return list;
 	}
 	
-	public List<orderDTO> dbSelectusers(){
-		List<orderDTO> list=temp.selectList("order.selectproduct");
-		return list;
-	}
+
+	public orderDTO dbSelectusers() {
+		return temp.selectOne("order.selectusers");
+	  }
 	
 	public void dbdelete(int data) {
 		temp.delete("order.del",data);

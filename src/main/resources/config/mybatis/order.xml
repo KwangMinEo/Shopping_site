@@ -5,16 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="order">	
 	
-	<insert id="add" parameterType="shopping.crud.order.orderDTO">
-	  insert into values(order_detail_seq.nextval,#{user_id},#{product_id}
-	  ,#{product_name},#{option1},#{option2},#{price},#{count},
-	  #{user_name},#{user_address1},#{user_address2},#{user_puone},
-	  #{orderdate},#{status},#{file1}
-	  )
-	  
-	</insert>
 	<select id="selectproduct" parameterType="shopping.crud.order.orderDTO" resultType="shopping.crud.order.orderDTO">
-	  select * from product
+	  select * from product 
 	 
 	</select>
 	
@@ -24,10 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	
-	<delete id="del" parameterType="int" >
-	delete from product where product_id=#{product_id}
-	</delete>
+
 	 
 </mapper>
 	

@@ -44,16 +44,17 @@ public class orderController {
 	@RequestMapping("/orderList.do")
 	public String order_list(HttpServletRequest request,Model model){
 		List<orderDTO> product=dao.dbSelectproduct();
-		List<orderDTO> users=dao.dbSelectusers();
+		orderDTO users=dao.dbSelectusers();
 		model.addAttribute("product", product);
 		model.addAttribute("users",users);
+		
 		return "orderList";
 	}//end
 	
 	@RequestMapping("/orderDelete.do")
 	public String order_delete(HttpServletRequest request) {
 		int data=Integer.parseInt(request.getParameter("idx"));
-		dao.dbdelete(data);
+		//dao.dbdelete(data);
 		return "redirect:/orderList.do";
 	}//end
 
