@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class orderDAO {
+public class OrderDAO {
 @Autowired
 SqlSessionTemplate temp;
 
-public void dbInsert(orderDTO dto) {
+public void dbInsert(OrderDTO dto) {
 	
 }//end
 }//class end

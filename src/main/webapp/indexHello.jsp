@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title></title>
 	<script type="text/javascript">
-		setTimeout("location.href='home.do'",2000);
+		setTimeout("location.href='zzimList.do'",2000);
 	</script>
 </head>
 <body>
