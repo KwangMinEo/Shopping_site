@@ -12,8 +12,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from product_quest where product_quest_num=#{product_quest_num}
 	</select>
 	
-	<select id="pwd" parameterType="int" resultType="int">
-		select count(*) as cnt from product_quest where pwd=#{pwd}
+	<select id="pwd" parameterType="shopping.crud.product.ProductQuestDTO" resultType="shopping.crud.product.ProductQuestDTO">
+		select * from product_quest where product_quest_num=#{product_quest_num} and pwd=#{pwd}
 	</select>
 	
 	<insert id="insert" parameterType="shopping.crud.product.ProductQuestDTO">

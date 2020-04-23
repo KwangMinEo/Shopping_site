@@ -1,6 +1,7 @@
 package shopping.crud.product;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -42,21 +43,18 @@ public class ProductQuestController {
 	}//end
 	
 	@RequestMapping(value="/productQuestPwd.do")
-	public String product_pwd(Model model, @RequestParam("pwd") int pwd, ProductQuestDTO dto,HttpServletResponse response, HttpSession session) throws Exception{
-		System.out.println(pwd);			
-		System.out.println(dto.getProduct_quest_num());
-		int result=pdao.dbpwd(pwd);	
-		session.setAttribute("questpwd",result);
-		if(result==0){
+	public String product_pwd(Model model, ProductQuestDTO dto,HttpServletResponse response, HttpSession session) throws Exception{			
+		ProductQuestDTO result=pdao.dbpwd(dto);	
+		session.setAttribute("questpwd",dto.getPwd());
+		
+		if(result==null || result.equals("")){
 			response.setContentType("text/html; charset=utf-8");
 			response.getWriter().append("<script>"
 				   + "alert('비번이 정확하지 않습니다.');"
 				   + "window.history.back();"
 				   + "</script>").flush();
 			return "redirect:/productQuestList.do";
-		}
-		return "redirect:/productQuestDetail.do?idx="+dto.getProduct_quest_num();
-		
+		}return "redirect:/productQuestDetail.do?idx="+dto.getProduct_quest_num();	
 	}
 	
 	@RequestMapping(value="/productQuestOut.do")

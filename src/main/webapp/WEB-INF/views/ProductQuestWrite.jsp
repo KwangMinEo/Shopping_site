@@ -16,12 +16,10 @@
 <body>
 	<font color=blue>[boardWrite.jsp]</font> <p>
 	 <form action="productQuestInsert.do">
-	 	이름: <input type=text name="name" value="kim"> <br>
+	 	 <input type=text name="product_id" value="kim"> <br>
+	 	비밀번호: <input type="password" name="pwd" value="1234"> 
 	 	제목: <input type=text name="title" value="LEE"> <br>
 	 	내용: <textarea name="content" rows="4" cols="20">KBbank</textarea> <br>
-	 	성별: 
-	 	  <input type="radio" name="gender" value="male">남자
-	 	  <input type="radio" name="gender" value="female" checked>여자<br>
 	 	
 	 	  
 	 	  <input type="submit" value="저장">&nbsp;&nbsp;

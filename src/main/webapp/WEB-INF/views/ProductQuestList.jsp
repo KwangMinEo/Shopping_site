@@ -41,19 +41,18 @@
 					  <div>
 					    <p>
 					    <c:choose> 
-					    <c:when test="${questpwd==null}">					    
+					    <c:when test="${questpwd==bean.pwd}">
+					    	${bean.content} 
+					    	<a href="productQuestOut.do">[확인완료]</a>
+					    </c:when>	
+					    <c:otherwise>					    
 						    <form action="productQuestPwd.do">
 						    <input type="hidden" name="product_quest_num" value="${bean.product_quest_num}">
 						    <input type="text" name="pwd">
 						    <button type="submit">ok</button>
 						    </form> 
-					    </c:when>
-					    <c:otherwise>
-					    	${bean.content} 
-					    	${bean.pwd} 
-					    	${questpwd}
-					    	<a href="productQuestOut.do">[확인완료]</a>
-					    </c:otherwise>				     
+					    </c:otherwise>
+					    			     
 					    </c:choose> 
 					    </p>
 					  </div>

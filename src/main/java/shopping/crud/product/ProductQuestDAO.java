@@ -26,8 +26,8 @@ SqlSessionTemplate temp;
  		return temp.selectOne("quest.detail",data);
  	}//end
  	
- 	public int dbpwd(int pwd) {
- 		return temp.selectOne("quest.pwd",pwd);
+ 	public ProductQuestDTO dbpwd(ProductQuestDTO dto) {
+ 		return temp.selectOne("quest.pwd",dto);
  	}//end
 
  	public void dbInsert(ProductQuestDTO dto) {
