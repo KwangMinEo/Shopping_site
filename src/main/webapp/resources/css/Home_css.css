@@ -13,12 +13,19 @@ a {
 }
 
 /* ----------------- main-menu ------------------ */
+header {
+	/*position: fixed;
+	top: 0;
+	width: 100%;*/
+	height: 120px;
+}
+
 .top_menu {
 	font-size: 12px;
 	font-color: #212121;
-	display: inline-\block;
-	border-bottom: 1px solid #F2F2F2;
+	width: 100%;
 	padding: 20px;
+	/*border-bottom: 1px solid #F2F2F2;*/
 }
 
 .top_menu .logo {
@@ -31,14 +38,33 @@ a {
 	margin-right: 20px;
 }
 
+.top_menu .search {
+	border-bottom: 2px solid #212121;
+}
+
+.top_menu .search span input {
+	width: 380px;
+	height: 30px;
+	border: 1px solid #ffffff;
+}
+
 .top_menu .user_action {
+	display: inline-block;
+}
+.top_menu .user_action ul {
+	display: inline-block;
+}
+.top_menu .user_action ul li {
 	display: inline-block;
 }
 
 
 
 
+
+/* bottom_menu*/
 .bottom_menu {
+	width: 100%;
 	font-size: 14px;
 	font-color: #212121;
 	display: inline-block;
@@ -52,8 +78,15 @@ a {
 
 .bottom_menu ul li {
 	display: inline-block;
-	height: 70px;
-	width: 75px;
+}
+
+.bottom_menu ul li a {
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	padding: 15px;
+	text-decoration: none;
+	font-color: #212121;
 }
 
 /* ----------------- main-slide ------------------ */
@@ -70,7 +103,7 @@ a {
 
 .first_wrap_i {
 	height: 400px;
-	float:left;
+	float: left;
 	margin: 20px;
 }
 
@@ -78,4 +111,3 @@ a {
 	height: 400px;
 	width: 310px;
 }
-

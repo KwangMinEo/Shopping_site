@@ -46,36 +46,55 @@
 			</div>
 
 			<div class="user_action">
-				<div class="user_out">
+				<ul class="user_out">
+					<li class="Cart"><a href=""> <i
+							class="fa fa-shopping-cart" aria-hidden="true"></i>
+					</a></li>
+					|
+					<li class="login"><a href="">로그인</a></li>
+				</ul>
+				<ul class="user_in">
+					<li class="Cart"><a href=""> <i
+							class="fa fa-shopping-cart" aria-hidden="true"></i>
+					</a></li>
+					|
+					<li class="membership"><a href=""> <i
+							class="fa fa-user-circle-o" aria-hidden="true"></i>
+					</a></li>
+				</ul>
+
+				<!-- <div class="user_out">
+					<div class="Cart">
+						<a href=""> <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+						</a>
+					</div>
 					<div class="login">
 						<a href="">로그인</a>
-					</div>
-					<div class="join">
-						<a href="">회원가입</a>
 					</div>
 				</div>
 				<div class="user_in">
 					<div class="logout">
 						<a href="">로그아웃</a>
 					</div>
-					<div class="my_page">
-						<a href="">마이페이지</a>
+					<div class="membership">
+						<a href=""> <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						</a>
 					</div>
 				</div>
+			</div> -->
 			</div>
-		</div>
 
 
-		<!-- 하단메뉴 -->
-		<div class="bottom_menu">
-			<ul>
-				<li><a href="">NEW</a></li>
-				<li><a href="">상의</a></li>
-				<li><a href="">하의</a></li>
-				<li><a href="">아우터</a></li>
-				<li><a href="">잡화</a></li>
-			</ul>
-		</div>
+			<!-- 하단메뉴 -->
+			<div class="bottom_menu">
+				<ul>
+					<li><a href="">NEW</a></li>
+					<li><a href="">상의</a></li>
+					<li><a href="">하의</a></li>
+					<li><a href="">아우터</a></li>
+					<li><a href="">잡화</a></li>
+				</ul>
+			</div>
 	</header>
 
 </body>
