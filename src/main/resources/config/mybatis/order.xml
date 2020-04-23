@@ -6,8 +6,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="order">	
 	
 	<insert id="add" parameterType="shopping.crud.order.orderDTO">
+	<select id="selectproduct" parameterType="shopping.crud.order.orderDTO" resultType="shopping.crud.order.orderDTO">
+	  select * from product 
+	 
+	</select>
 	
-	</insert>
+	<select id="selectusers" parameterType="shopping.crud.order.orderDTO" resultType="shopping.crud.order.orderDTO">
+	  select * from users where user_id  = #{user_id}
+	 
+	</select>
+	
+	
+
 	 
 </mapper>
 	
