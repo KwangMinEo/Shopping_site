@@ -7,6 +7,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAll" resultType="shopping.crud.product.ProductQuestDTO">
 		select rownum qrn, q.* from product_quest q
 	</select>
+	
+	<select id="detail" parameterType="int" resultType="shopping.crud.product.ProductQuestDTO">
+		select * from product_quest where product_quest_num=#{product_quest_num}
+	</select>
+	
+	<select id="pwd" parameterType="int" resultType="int">
+		select count(*) as cnt from product_quest where pwd=#{pwd}
+	</select>
+	
+	<insert id="insert" parameterType="shopping.crud.product.ProductQuestDTO">
+		insert into product_quest values(product_quest_num_seq.nextval,#{product_id},#{pwd},#{title},#{content})
+	</insert>
 </mapper>
 	
 
