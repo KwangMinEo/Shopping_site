@@ -5,14 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <meta charset="UTF-8">
 <title> [guestList.jsp] </title>
-	<style type="text/css">
-	  *{ font-size: 18pt;  }
-	  a{ font-size: 18pt; text-decoration:none; color:blue ; font-family: Comic Sans MS; }
-	  a:hover{ font-size: 18pt; text-decoration:underline; color:green ; font-family: Comic Sans MS; }
-	</style>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 	<script type="text/javascript">	
 
@@ -41,15 +38,21 @@
       }
 
       function upCount(cnt){
-          var up = Number($('#count'+cnt).val());
-          var pr = Number($('#price'+cnt).val());
-        	  pr = pr / up;
-              up = up+1;
+          var up = Number($('#count'+cnt).val()); // 변경전 수량 가져오기
+          var pr = Number($('#price'+cnt).val()); // 변경전 가격 가져오기
+          var ptotal = Number($('#totalprice').val()); // 변경전 총금액 가져오기
+        
+        	  pr = pr / up; // 1개당 가격 구하기
+        	 
+              up = up+1;  // 수량 증가
               if(up <100){
-            	  pr = pr * up;
+            	  ptotal = ptotal + pr; //총 금액에 증가된 가격 더하기
+
+            	  pr = pr * up; //증가된 수량으로 가격  변경
                   
                   $('#count'+cnt).val(up);
                   $('#price'+cnt).val(pr); 
+                  $('#totalprice').val(ptotal);
               }else{
                   alert("수량이 100개를 넘었습니다 다시 확인해주세요.");
               }
@@ -57,19 +60,24 @@
               
   
       }
-
       
       function downCount(cnt){
     	  var up = Number($('#count'+cnt).val());
           var pr = Number($('#price'+cnt).val());
+          var ptotal = Number($('#totalprice').val());
+          
           pr = pr / up;
           up = up-1;
 
           if(up>0){
+
+        	  ptotal = ptotal - pr;
+        	  
         	  pr = pr * up;
               
               $('#count'+cnt).val(up);
               $('#price'+cnt).val(pr);
+              $('#totalprice').val(ptotal);
           }else{
         	  alert("1개 보다 작은 수량을 선택할 수 없습니다. 수량을 확인해주세요.");
           }
@@ -89,7 +97,7 @@
 			<input type="hidden" name="hiddenValue" id="hiddenValue" value=""/>
 			<input type="hidden" name="cnt" id ="zzimcount" value=""/>
 		</form>
-		<table width=80% border=1 cellspacing=0>
+		<table width=100% border=1 cellspacing=0>
 	<!-- 		<tr align="right"> -->
 	<!-- 	 		<td colspan="7"> 찜한 갯수 : &nbsp;</td> -->
 	<!-- 		</tr> -->
@@ -103,24 +111,24 @@
 				<td width="10%">가격</td>
 				<td width="10%">취소하기</td>
 			</tr>
+			<c:set var = "total" value ="0"></c:set>
 			<c:forEach var ="zdto" items="${list}" varStatus="status" >
-			<c:set var = "price" value ="${zdto.price*zdto.count}"> </c:set>
+			<c:set var = "price" value ="${zdto.price}"> </c:set>
 			<tr align="center">
 				<td align="center"  style ="width: 50px "><input type="checkbox" class ="zzimcheck" name="ab1" value="${zdto.zzim_num}"></td>
-				<td><img src ="resources/images/1.jpg" width="75px" height="75px"></td>
+				<td><img src ="${zdto.img1}" width="75px" height="75px"></td>
 				<td> <a href ="#">${zdto.product_name}</a> </td>
 				<td> 옵션1 : ${zdto.option1 }<br> 옵션2 : ${zdto.option2 }</td>
 				<td><input type="button" value ="-" onclick="downCount(${status.count});">&nbsp;&nbsp;<input type ="label" id ="count${status.count}" style="text-align:center; width:30px; none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" value ="${zdto.count}" disabled="disabled" >&nbsp;&nbsp;<input type="button" value ="+" onclick="upCount(${status.count});"></td>
 				<td><input type ="label" id ="price${status.count}" style="text-align:center; none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" value ="${price}" disabled="disabled" ></td>
 				<td><a href ="zzimDelete.do?id=${zdto.zzim_num}">삭제하기</a></td>
-	
 			</tr>
+			<input type="hidden" value ="${total = total + zdto.price }">
 			</c:forEach>
 			<tr >
-				<td colspan = "7" align="right">총금액 : <input type ="text" value =""></td>
+				<td colspan = "7" align="right">총금액 : <input type ="text" id ="totalprice" value ="${total}" disabled="disabled"></td>
 			</tr>	
 	 	</table>
-	
 	</div>
 	<div>
 		<input type ="button" value ="선택상품 삭제" onclick="fnGetdata();">
@@ -131,14 +139,3 @@
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
