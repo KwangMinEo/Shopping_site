@@ -43,17 +43,19 @@ public class productController {
 	}// List end
 
 	@RequestMapping(value = "/productDetail.do")
-	public String product_detail(@RequestParam("id") int data, Model model) {
+	public String product_detail(@RequestParam("id") String id, Model model) {
+		int data = Integer.parseInt(id);
 		productDTO dto = pdao.productDetail(data);
 		String[] colorOption = dto.getProduct_color().split(",");
 		String[] sizeOption = dto.getProduct_size().split(",");
-		
+
 		model.addAttribute("dto", dto);
 		model.addAttribute("colorOption", colorOption);
 		model.addAttribute("sizeOption", sizeOption);
 		return "productDetail";
 	}// Detail end
-	
+
+	/*------------------------------------------------------------------------
 	@RequestMapping(value = "/zzim.do", method = RequestMethod.GET)
 	public String product_zzim(@RequestParam("product_id") int data, Model model) {
 		productDTO dto = pdao.productDetail(data);
@@ -61,11 +63,11 @@ public class productController {
 		return "productDetail";
 	}// Detail end
 	
-/*------------------------------------------------------------------------
-
+	
+	
 	@RequestMapping("/productInsert.do")
 	public String board_insert(ProductDTO dto) {
-
+	
 		  
 	  String path=application.getRealPath("/resources/upload");
 	  System.out.println(path);
@@ -75,7 +77,7 @@ public class productController {
 	  try{
 	    dto.getUpload_f().transferTo(file);
 	  }catch(Exception ex){ System.out.println("파일에러:"+ex); }
-
+	
 	  
 	  //upload_f데이터를 물리적파일화 img_file_name필드연결
 	  dto.setImg_file_name(img); 
@@ -85,14 +87,15 @@ public class productController {
 	}//end
 	
 	
-------------------------------------------------------------------------*/
-	
+	------------------------------------------------------------------------*/
+
 	@RequestMapping("/productDelete.do")
 	public String board_delete(@RequestParam("idx") int data, Model model) {
-	  int result =pdao.dbDelete(data);
-	  if(result>0) return "redirect:/productList.do";
-	  else return "redirect:/productDetail.do";
-	}//detail end
-	
+		int result = pdao.dbDelete(data);
+		if (result > 0)
+			return "redirect:/productList.do";
+		else
+			return "redirect:/productDetail.do";
+	}// detail end
 
 }// ProductController class END

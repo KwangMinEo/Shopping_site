@@ -27,10 +27,7 @@ public class Zzim_Controller {
 	private static final Logger logger = LoggerFactory.getLogger(Zzim_Controller.class);
 	
 
-	@RequestMapping(value="zzim.do",method=RequestMethod.GET)
-	 public String Zzim(Model model){
-		return "zzimList";  
-	}//end
+
 	
 	@RequestMapping("/zzimInsert.do")
 	public String zzim_insert(ZzimDTO dto) {
