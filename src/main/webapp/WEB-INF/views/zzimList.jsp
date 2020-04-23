@@ -28,7 +28,7 @@
           var cnt =0;
    
           $('input:checkbox[name=ab1]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
-              chkArray.push(this.value);
+              chkArray.push(this.value);  //이거대신 변수하나 선언해서 더하면 
               cnt++;
           });
           $('#hiddenValue').val(chkArray);
@@ -40,10 +40,41 @@
           $('#selectDelete').submit();
       }
 
-      function upCount(){
-          var up = ${'#count'}.val();
-          alert(up);
+      function upCount(cnt){
+          var up = Number($('#count'+cnt).val());
+          var pr = Number($('#price'+cnt).val());
+        	  pr = pr / up;
+              up = up+1;
+              if(up <100){
+            	  pr = pr * up;
+                  
+                  $('#count'+cnt).val(up);
+                  $('#price'+cnt).val(pr); 
+              }else{
+                  alert("수량이 100개를 넘었습니다 다시 확인해주세요.");
+              }
 
+              
+  
+      }
+
+      
+      function downCount(cnt){
+    	  var up = Number($('#count'+cnt).val());
+          var pr = Number($('#price'+cnt).val());
+          pr = pr / up;
+          up = up-1;
+
+          if(up>0){
+        	  pr = pr * up;
+              
+              $('#count'+cnt).val(up);
+              $('#price'+cnt).val(pr);
+          }else{
+        	  alert("수량이 1개보다 작습니다. 다시 확인해주세요.");
+          }
+
+         
       }
 	</script>
 </head>
@@ -67,14 +98,15 @@
 			<td width="10%">가격</td>
 			<td width="10%">취소하기</td>
 		</tr>
-		<c:forEach var ="zdto" items="${list}">
+		<c:forEach var ="zdto" items="${list}" varStatus="status" >
+		<c:set var = "price" value ="${zdto.price*zdto.count}"> </c:set>
 			<tr align="center">
 				<td align="center"  style ="width: 50px "><input type="checkbox" class ="zzimcheck" name="ab1" value="${zdto.zzim_num}"></td>
 				<td><img src ="resources/images/1.jpg" width="75px" height="75px"></td>
 				<td> <a href ="#">${zdto.product_name}</a> </td>
 				<td> 옵션1 : ${zdto.option1 }<br> 옵션2 : ${zdto.option2 }</td>
-				<td><input type="button" value ="-" onclick="upCount();">&nbsp;&nbsp;<input type ="label" id ="count" style="width: 10px; none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" value ="${zdto.count}">&nbsp;&nbsp;<input type="button" value ="+" onclick=""></td>
-				<td>${zdto.price }</td>
+				<td><input type="button" value ="-" onclick="downCount(${status.count});">&nbsp;&nbsp;<input type ="label" id ="count${status.count}" style="text-align:center; width:30px; none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" value ="${zdto.count}" disabled="disabled" >&nbsp;&nbsp;<input type="button" value ="+" onclick="upCount(${status.count});"></td>
+				<td><input type ="label" id ="price${status.count}" style="text-align:center; none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" value ="${price}" disabled="disabled" ></td>
 				<td><a href ="zzimDelete.do?id=${zdto.zzim_num}">삭제하기</a></td>
 				
 			</tr>
