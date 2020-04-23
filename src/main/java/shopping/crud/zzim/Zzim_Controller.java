@@ -41,7 +41,7 @@ public class Zzim_Controller {
 	
 	@RequestMapping("/zzimList.do")
 	public String zzim_select(HttpServletRequest request, Model model) {
-		List<ZzimDTO> list = zzimDAO.dbSelect("aa");
+		List<ZzimDTO> list = zzimDAO.dbSelect("aaaa");
 		model.addAttribute("list",list);
 		
 	  return "zzimList";

@@ -71,7 +71,7 @@
               $('#count'+cnt).val(up);
               $('#price'+cnt).val(pr);
           }else{
-        	  alert("수량이 1개보다 작습니다. 다시 확인해주세요.");
+        	  alert("1개 보다 작은 수량을 선택할 수 없습니다. 수량을 확인해주세요.");
           }
 
          
@@ -80,26 +80,31 @@
 </head>
 <body>
 <div class ="container">
-	<form id ="selectDelete" action ="zzimSelectDelete.do">
-		<input type="hidden" name="hiddenValue" id="hiddenValue" value=""/>
-		<input type="hidden" name="cnt" id ="zzimcount" value=""/>
-	</form>
-	<table width=80% border=1 cellspacing=0>
-		<tr align="right">
-	 		<td colspan="7"> 찜한 갯수 : &nbsp;</td>
-		</tr>
-		
-		<tr bgcolor="pink" align="center">
-			<td width="5%"><input type="checkbox" name="all" class="check_all"></td> 
-			<td width="10%">사진</td>
-			<td width="35%">제품명</td>
-			<td width="20%">옵션</td>
-			<td width="10%">수량</td>
-			<td width="10%">가격</td>
-			<td width="10%">취소하기</td>
-		</tr>
-		<c:forEach var ="zdto" items="${list}" varStatus="status" >
-		<c:set var = "price" value ="${zdto.price*zdto.count}"> </c:set>
+	
+	<div>
+		<h1 align="center"> ZZIM LIST</h1>
+	</div>
+	<div>
+		<form id ="selectDelete" action ="zzimSelectDelete.do">
+			<input type="hidden" name="hiddenValue" id="hiddenValue" value=""/>
+			<input type="hidden" name="cnt" id ="zzimcount" value=""/>
+		</form>
+		<table width=80% border=1 cellspacing=0>
+	<!-- 		<tr align="right"> -->
+	<!-- 	 		<td colspan="7"> 찜한 갯수 : &nbsp;</td> -->
+	<!-- 		</tr> -->
+			
+			<tr bgcolor="pink" align="center">
+				<td width="5%"><input type="checkbox" name="all" class="check_all"></td> 
+				<td width="10%">사진</td>
+				<td width="35%">제품명</td>
+				<td width="20%">옵션</td>
+				<td width="10%">수량</td>
+				<td width="10%">가격</td>
+				<td width="10%">취소하기</td>
+			</tr>
+			<c:forEach var ="zdto" items="${list}" varStatus="status" >
+			<c:set var = "price" value ="${zdto.price*zdto.count}"> </c:set>
 			<tr align="center">
 				<td align="center"  style ="width: 50px "><input type="checkbox" class ="zzimcheck" name="ab1" value="${zdto.zzim_num}"></td>
 				<td><img src ="resources/images/1.jpg" width="75px" height="75px"></td>
@@ -108,20 +113,20 @@
 				<td><input type="button" value ="-" onclick="downCount(${status.count});">&nbsp;&nbsp;<input type ="label" id ="count${status.count}" style="text-align:center; width:30px; none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" value ="${zdto.count}" disabled="disabled" >&nbsp;&nbsp;<input type="button" value ="+" onclick="upCount(${status.count});"></td>
 				<td><input type ="label" id ="price${status.count}" style="text-align:center; none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" value ="${price}" disabled="disabled" ></td>
 				<td><a href ="zzimDelete.do?id=${zdto.zzim_num}">삭제하기</a></td>
-				
+	
 			</tr>
-		
-		</c:forEach>
-		
- 	</table>
-	<p>
+			</c:forEach>
+			<tr >
+				<td colspan = "7" align="right">총금액 : <input type ="text" value =""></td>
+			</tr>	
+	 	</table>
 	
-	<input type ="button" value ="선택상품 삭제" onclick="fnGetdata();">
-	<input type ="button" value ="쇼핑 계속">
-	<input type ="button" value ="주문하기" >
-	
-	<br>
-
+	</div>
+	<div>
+		<input type ="button" value ="선택상품 삭제" onclick="fnGetdata();">
+		<input type ="button" value ="쇼핑 계속">
+		<input type ="button" value ="주문하기" >
+	</div>
 
 </div>
 </body>
