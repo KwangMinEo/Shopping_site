@@ -116,7 +116,7 @@
 						<th>옵션1</th>
 						<td><select class="option1" name="option1" size=20>
 								<option value="">---[필수]색상을 선택하세요---</option>
-								<c:forEach items="colorOption">
+								<c:forEach items="${colorOption }">
 									<option value="${colorOption }">${colorOption }</option>
 								</c:forEach>
 						</select></td>
@@ -125,7 +125,7 @@
 						<th>옵션2</th>
 						<td><select class="option2" name="option2" size=20>
 								<option value="">---[필수]사이즈를 선택하세요---</option>
-								<c:forEach items="sizeOption">
+								<c:forEach items="${sizeOption }">
 									<option value="${sizeOption }">${sizeOption }</option>
 								</c:forEach>
 						</select></td>

@@ -47,7 +47,8 @@ public class productController {
 		System.out.println("조회할 데이터: "+ data);
 		productDTO dto = pdao.productDetail(data);
 		System.out.println("조회된 데이터: "+dto.getProduct_id());
-		
+		System.out.println("colors: "+dto.getProduct_color());
+		System.out.println("sizes: "+dto.getProduct_size());
 		String[] color = dto.getProduct_color().split(",");
 		String[] size = dto.getProduct_size().split(",");
 		
