@@ -17,6 +17,45 @@
 	        $( '.check_all' ).click( function() {
 	          $( '.zzimcheck' ).prop( 'checked', this.checked );
 	        } );
+
+	        $("#order").click(function(){ 
+				
+				var rowData = new Array();
+				var tdArr = new Array();
+				var checkbox = $("input:checkbox[name=ab1]:checked");
+				
+				// 체크된 체크박스 값을 가져온다
+				checkbox.each(function(i) {
+		
+					// checkbox.parent() : checkbox의 부모는 <td>이다.
+					// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
+					var tr = checkbox.parent().parent().eq(i);
+					var td = tr.children();
+					
+					// 체크된 row의 모든 값을 배열에 담는다.
+					rowData.push(tr.text());
+					
+					// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
+					var img1 = td.eq(1).children().eq(1).val();     //text()+", "
+					var product = td.eq(2).text();
+					var option = td.eq(3).text().split("/");
+					var option1 = option[0].replace("옵션1 : ","");
+					var option2 = option[1].replace("옵션2 : ","");
+					var count = td.eq(4).children().eq(1).val();                //.text()+", ";
+					var price = td.eq(5).children().eq(0).val();
+					
+					console.log("img1 : " + img1);
+					console.log("product : " + product);
+					console.log("option1 : " + option1);
+					console.log("option2 : " + option2);
+					console.log("count : " + count);
+					console.log("price : " + price);
+
+				});
+				
+			});
+
+			
 	  } );
 
 	  function fnGetdata(){
@@ -112,13 +151,14 @@
 				<td width="10%">취소하기</td>
 			</tr>
 			<c:set var = "total" value ="0"></c:set>
+			
 			<c:forEach var ="zdto" items="${list}" varStatus="status" >
 			<c:set var = "price" value ="${zdto.price}"> </c:set>
 			<tr align="center">
 				<td align="center"  style ="width: 50px "><input type="checkbox" class ="zzimcheck" name="ab1" value="${zdto.zzim_num}"></td>
-				<td><img src ="${zdto.img1}" width="75px" height="75px"></td>
+				<td><img src ="${zdto.img1}" width="75px" height="75px"><input type="hidden" value ="${zdto.img1}"></td>
 				<td> <a href ="#">${zdto.product_name}</a> </td>
-				<td> 옵션1 : ${zdto.option1 }<br> 옵션2 : ${zdto.option2 }</td>
+				<td> 옵션1 : ${zdto.option1 } /<br> 옵션2 : ${zdto.option2 }</td>
 				<td><input type="button" value ="-" onclick="downCount(${status.count});">&nbsp;&nbsp;<input type ="label" id ="count${status.count}" style="text-align:center; width:30px; none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" value ="${zdto.count}" disabled="disabled" >&nbsp;&nbsp;<input type="button" value ="+" onclick="upCount(${status.count});"></td>
 				<td><input type ="label" id ="price${status.count}" style="text-align:center; none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" value ="${price}" disabled="disabled" ></td>
 				<td><a href ="zzimDelete.do?id=${zdto.zzim_num}">삭제하기</a></td>
@@ -133,7 +173,7 @@
 	<div>
 		<input type ="button" value ="선택상품 삭제" onclick="fnGetdata();">
 		<input type ="button" value ="쇼핑 계속">
-		<input type ="button" value ="주문하기" >
+		<input type ="button" value ="주문하기" id ="order">
 	</div>
 
 </div>
