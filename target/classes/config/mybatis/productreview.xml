@@ -7,6 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAll" resultType="shopping.crud.product.ProductReviewDTO">
 		select rownum rrn, r.* from product_review r
 	</select>
+	
+	<insert id="insert" parameterType="shopping.crud.product.ProductReviewDTO">
+		insert into product_review values(review_num_seq.nextval, #{product_id}, #{user_id}, #{content}, #{point}, #{file1} )
+	</insert>
 </mapper>
 	
 

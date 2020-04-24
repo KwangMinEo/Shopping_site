@@ -16,11 +16,13 @@ public class ProductReviewDAO {
 @Autowired
 SqlSessionTemplate temp;
 	
- 	public List<ProductQuestDTO> dbSelect( ){
- 		 List<ProductQuestDTO> list=temp.selectList("review.selectAll");
+ 	public List<ProductReviewDTO> dbSelect( ){
+ 		 List<ProductReviewDTO> list=temp.selectList("review.selectAll");
 	  return list;
 	}//end
  	 
- 	
+ 	public void dbInsert(ProductReviewDTO dto){
+		temp.insert("review.insert",dto);
+	}//end
 
 }//LoginDAO end

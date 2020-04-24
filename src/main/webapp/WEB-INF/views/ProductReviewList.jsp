@@ -28,7 +28,14 @@
 		      <th scope="row">${bean.rrn}</th>
 		      <td>${bean.content}</td>
 		      <td>${bean.user_id}</td>
-		      <td>${bean.point}</td>
+		      <td>
+		     	 <c:forEach var="i" begin="1" end="${bean.point}">
+				 	<img src="resources/images/staryellow.png" width="20" height="20">
+				 </c:forEach>
+				 <c:forEach var="j" begin="1" end="${5-bean.point}">
+				 	<img src="resources/images/stargray.png" width="20" height="20">
+				 </c:forEach>
+			  </td>
 		    </tr>
 	    </c:forEach> 
 	 
@@ -37,10 +44,9 @@
 	
 	<button type="button" class="btn btn-outline-dark">1</button>
 	<p>
-   <a href="index.jsp">[index.jsp]</a>
-   <a href="board.do">[하비등록화면]</a>
-   <a href="boardList.do">[하비전체출력]</a>
-   <a href="login.do">[login.do]</a>
+	 <a href="productReview.do">[글쓰기]</a>
+     <a href="productReviewList.do">[리뷰]</a>
+   	 <a href="productQuestList.do">[문의]</a>
 </div>
 
 

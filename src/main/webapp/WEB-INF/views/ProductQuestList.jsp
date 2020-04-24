@@ -41,19 +41,20 @@
 					  <div>
 					    <p>
 					    <c:choose> 
-					    <c:when test="${questpwd==null}">					    
+					    <c:when test="${questpwd==bean.pwd && questnum==bean.product_quest_num}">
+					    	${bean.content} <p>
+					    	<a href="productQuestOut.do">[확인완료]</a><p>
+					    	<a href="productQuestDelete.do?qid=${bean.product_quest_num}">[삭제]</a>
+					    	
+					    </c:when>	
+					    <c:otherwise>					    
 						    <form action="productQuestPwd.do">
 						    <input type="hidden" name="product_quest_num" value="${bean.product_quest_num}">
-						    <input type="text" name="pwd">
+						    <input type="password" name="pwd">
 						    <button type="submit">ok</button>
 						    </form> 
-					    </c:when>
-					    <c:otherwise>
-					    	${bean.content} 
-					    	${bean.pwd} 
-					    	${questpwd}
-					    	<a href="productQuestOut.do">[확인완료]</a>
-					    </c:otherwise>				     
+					    </c:otherwise>
+					    			     
 					    </c:choose> 
 					    </p>
 					  </div>
@@ -63,13 +64,12 @@
 	    </c:forEach>
 	  </tbody>
 	</table>
-		<a href="productQuest.do">[문의하기]</a>
+		
 	<button type="button" class="btn btn-outline-dark">1</button>
 	<p>
-   <a href="index.jsp">[index.jsp]</a>
-   <a href="board.do">[하비등록화면]</a>
-   <a href="boardList.do">[하비전체출력]</a>
-   <a href="login.do">[login.do]</a>
+	<a href="productQuest.do">[문의하기]</a>
+    <a href="productReviewList.do">[리뷰]</a>
+    <a href="productQuestList.do">[문의]</a>
 </div>
 
 
