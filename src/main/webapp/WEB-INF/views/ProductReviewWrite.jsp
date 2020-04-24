@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ProductReviewWrite.jsp</title>
+<title>이용후기</title>
 	<script type="text/javascript">
 	var locked=0;
 	
@@ -70,28 +70,16 @@
 	}
 
 	function check(){
-			var userid=myform.userid.value;
 			var point=myform.point.value;
-			var title=myform.title.value;
 			var content=myform.content.value;
 			
 			if(point==null||point==""){
-				modal({
-					type: 'error',
-					title: '실패',
-					text: '별점을 체크해주세요.',
-					callback: function(result ) { }
-				});
-				return false;
+				alert('별점을 주세요.')
+				return;
 			}else if(content==null||content==""){
-				modal({
-					type: 'error',
-					title: '실패',
-					text: '내용을 적어주세요.',
-					callback: function(result ) { }
-				});
+				alert('내용을 입력해 주세요.')
 				myform.content.focus();
-				return false;
+				return;
 			}else{
 				myform.submit();
 			}
@@ -108,8 +96,7 @@
 		
 			<tr>				
 				<td class="td1">별점주기</td>
-				<td class="td2">
-					
+				<td class="td2">			
 					<span>
 						<img id=image1 onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)" src="resources/images/stargray.png">
 						<img id=image2 onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)" src="resources/images/stargray.png">
@@ -135,14 +122,14 @@
 				<td class="td2"><input type="file" name="upload_f"> </td>		
 			</tr>	
 		</table>	  
-	 	  <input type="submit" value="저장">&nbsp;&nbsp;
+	 	  <input type="button" class="button" value="작성완료" onclick="check();">&nbsp;&nbsp;
 	 	  <input type="reset" value="입력취소">          
 	 	</form>
 
 		<p>
-	 	<a href="index.jsp">[index.jsp]</a>
-	  	<a href="board.do">[board등록]</a>
-	  	<a href="boardList.do">[board출력]</a>
+	  	<a href="productReview.do">[글쓰기]</a>
+    	<a href="productReviewList.do">[리뷰]</a>
+   	 	<a href="productQuestList.do">[문의]</a>
 	</div>
 </body>
 </html>

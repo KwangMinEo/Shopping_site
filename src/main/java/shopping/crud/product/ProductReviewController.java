@@ -32,10 +32,46 @@ public class ProductReviewController {
 	
 	
 	@RequestMapping(value="/productReviewList.do")
-	public String productR_select(Model model) {
-		List<ProductReviewDTO> PD = pdao.dbSelect();
-		model.addAttribute("PD",PD);
-		return "ProductReviewList";
+	public String productR_select(HttpServletRequest request, Model model) {
+		 String pnum;
+		 int pageNUM, pagecount;
+		 int start, end; 
+		 int startpage, endpage;  
+		 int temp;	
+		 String sqry="";
+		 String skey="", sval="";
+		 String returnpage=""; 
+		 int Rnumber; 
+		 
+		 pnum=request.getParameter("pagePRNum");
+		 if(pnum=="" || pnum==null) {
+			 pnum="1";
+		 }
+		 
+		 pageNUM=Integer.parseInt(pnum);
+		 int Gtotal=pdao.dbCount();
+		 start=(pageNUM-1)*10+1;
+		 end=pageNUM*10;
+	 
+		 if(Gtotal%10==0) {pagecount = Gtotal/10;}
+		 else {pagecount = (Gtotal/10)+1;}
+		 
+		 temp=(pageNUM-1)%10;
+		 startpage=pageNUM-temp;
+		 endpage=startpage+9;
+		 if(endpage>pagecount) {endpage=pagecount;}
+	
+		
+		
+		List<ProductReviewDTO> PD = pdao.dbSelect(start,end);
+		 model.addAttribute("pageNUM", pageNUM);
+		 model.addAttribute("startpage", startpage);
+		 model.addAttribute("endpage", endpage);
+		 model.addAttribute("pagecount", pagecount);
+		
+		 
+		 model.addAttribute("PD",PD);
+		 return "ProductReviewList";
 	}//end
 	
 	@RequestMapping(value="/productReview.do")
@@ -51,7 +87,7 @@ public class ProductReviewController {
 		try {
 			dto.getUpload_f().transferTo(file);
 		}catch (Exception e) {System.out.println(e);	}		
-		dto.setFile1(img);		
+		dto.setFile1(img);
 		pdao.dbInsert(dto);
 		return "redirect:/productReviewList.do";
 	}//end

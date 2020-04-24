@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -31,8 +32,43 @@ public class ProductQuestController {
 	
 	
 	@RequestMapping(value="/productQuestList.do")
-	public String quest_select(Model model) {
-		List<ProductQuestDTO> PD = pdao.dbSelect();
+	public String quest_select(HttpServletRequest request, Model model) {
+		String pnum;
+		 int pageNUM, pagecount;
+		 int start, end; 
+		 int startpage, endpage;  
+		 int temp;	
+		 String sqry="";
+		 String skey="", sval="";
+		 String returnpage=""; 
+		 int Rnumber; 
+		 
+		 pnum=request.getParameter("pagePQNum");
+		 if(pnum=="" || pnum==null) {
+			 pnum="1";
+		 }
+		 
+		 pageNUM=Integer.parseInt(pnum);
+		 int Gtotal=pdao.dbCount();
+		 start=(pageNUM-1)*10+1;
+		 end=pageNUM*10;
+	 
+		 if(Gtotal%10==0) {pagecount = Gtotal/10;}
+		 else {pagecount = (Gtotal/10)+1;}
+		 
+		 temp=(pageNUM-1)%10;
+		 startpage=pageNUM-temp;
+		 endpage=startpage+9;
+		 if(endpage>pagecount) {endpage=pagecount;}
+	
+		
+		
+		List<ProductQuestDTO> PD = pdao.dbSelect(start,end);
+		model.addAttribute("pageNUM", pageNUM);
+		model.addAttribute("startpage", startpage);
+		model.addAttribute("endpage", endpage);
+		model.addAttribute("pagecount", pagecount);
+		
 		model.addAttribute("PD",PD);
 		return "ProductQuestList";
 	}//end
@@ -49,7 +85,7 @@ public class ProductQuestController {
 		session.setAttribute("questpwd",dto.getPwd());
 		session.setAttribute("questnum",dto.getProduct_quest_num());
 		
-		if(result==null || result.equals("")){
+		if(result==null){
 			response.setContentType("text/html; charset=utf-8");
 			response.getWriter().append("<script>"
 				   + "alert('비번이 정확하지 않습니다.');"

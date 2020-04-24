@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 
+
 @Repository
 @Component
 public class ProductReviewDAO {
@@ -16,13 +17,21 @@ public class ProductReviewDAO {
 @Autowired
 SqlSessionTemplate temp;
 	
- 	public List<ProductReviewDTO> dbSelect( ){
- 		 List<ProductReviewDTO> list=temp.selectList("review.selectAll");
+ 	public List<ProductReviewDTO> dbSelect(int start, int end){
+ 		ProductReviewDTO dto = new ProductReviewDTO();
+ 		dto.setStart(start);
+ 		dto.setEnd(end);
+ 		List<ProductReviewDTO> list=temp.selectList("review.selectAll",dto);
 	  return list;
 	}//end
  	 
  	public void dbInsert(ProductReviewDTO dto){
 		temp.insert("review.insert",dto);
 	}//end
+ 	
+ 	public int dbCount() {	
+ 		return temp.selectOne("review.countAll");
+	}//end
+	
 
 }//LoginDAO end
