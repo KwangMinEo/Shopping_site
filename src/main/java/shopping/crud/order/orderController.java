@@ -42,9 +42,10 @@ public class orderController {
 	}// end
 	
 	@RequestMapping("/orderList.do")
-	public String order_list(HttpServletRequest request,Model model){
+	public String order_list(@RequestParam("idx")String data,Model model){
 		List<orderDTO> product=dao.dbSelectproduct();
-		orderDTO users=dao.dbSelectusers();
+		System.out.println(data);
+		orderDTO users=dao.dbSelectusers(data);
 		model.addAttribute("product", product);
 		model.addAttribute("users",users);
 		
