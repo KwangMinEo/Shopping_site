@@ -35,7 +35,7 @@ public class customerController {
 	@Inject
 	@Autowired
 	//BoardDAO dao;  ����
-	BoardDAOImp dao; 
+	customerDAO dao; 
 	
 	
 	
@@ -43,36 +43,12 @@ public class customerController {
 	private ServletContext  application;
 	
 	
-	@RequestMapping(value="/board.do", method=RequestMethod.GET)
-	public String guest_write() {
-	   return "boardWrite";
-	}//end
-	
-	
-	@RequestMapping("/boardInsert.do")
-	public String board_insert(customerDTO dto) {  
-	  String path=application.getRealPath("/resources/upload");
-	  String img=dto.getUpload_f().getOriginalFilename();
-	  File file = new File(path, img);
-	  
-	  try{ dto.getUpload_f().transferTo(file); }catch(Exception ex){  }  
-	  dto.setImg_file_name(img); 
-	  dao.dbInsert(dto); 
-	  return "redirect:/boardList.do";
-	}//end
-	//////////////////////////////////////////////////////////////
-	
-	
-//	@RequestMapping("/boardList.do")
-//	public String board_select(Model model) {
-//		int Gtotal = dao.dbCount();
-//		List<BoardDTO> LG = dao.dbSelect();
-//		model.addAttribute("Gtotal", Gtotal);
-//		model.addAttribute("LG", LG);
-//	    return "boardList"; 
-//	}//end
+	@RequestMapping(value="/customer.do", method=RequestMethod.GET)
+	public String goCustomer() {
+	   return "customer_center";
+	}
 
-	@RequestMapping("/boardList.do")
+	@RequestMapping("/customerList.do")
 	public String board_select(HttpServletRequest request ,Model model) {
 		 String pnum;
 		 int pageNUM, pagecount;
@@ -87,7 +63,7 @@ public class customerController {
 		 skey=request.getParameter("keyfield");
 		 sval=request.getParameter("keyword");
 		 if(skey==null || sval==null || skey=="" || sval=="") {
-			 skey="title"; sval="";
+			 skey="QnA_title"; sval="";
 		 }
 		 
 		 
@@ -117,9 +93,9 @@ public class customerController {
 		endpage=startpage+9;
 		if(endpage>pagecount) { endpage=pagecount; }
 		
-		//List<BoardDTO> LG = dao.dbSelect();
+		List<customerDTO> LG = dao.dbSelect();
 		//List<BoardDTO> LG = dao.dbSelect(start,end);
-		List<customerDTO> LG = dao.dbSelect(start,end,skey,sval);
+//		List<customerDTO> LG = dao.dbSelect(start,end,skey,sval);
 		
 		model.addAttribute("Gtotal", Gtotal); //��ȸ����
 		model.addAttribute("GGtotal", GGtotal); //��ü����
@@ -131,101 +107,10 @@ public class customerController {
 		model.addAttribute("skey", skey);
 		model.addAttribute("sval", sval);	
 		model.addAttribute("returnpage", returnpage);
-	    return "boardList"; 
+	    return "customerList"; 
 	}//end
+
 	
-	 @RequestMapping("boardDetail.do")
-	 public String  board_detail( @RequestParam("Gidx") int data , Model model ) {
-	    customerDTO dto=dao.dbDetail(data);
-	    model.addAttribute("dto", dto);
-	    return "boardDetail" ;
-	 }
-	 
-	 @RequestMapping("download.do")
-	 public void  board_download( HttpServletRequest request, HttpServletResponse response) {
-		 String path=application.getRealPath("/resources/upload");
-		  String img= request.getParameter("Gidx");
-		  File file = new File(path, img);
-		 
-		  
-		  try{
-		   //�߻�޼ҵ尡 ������ �߻�Ŭ����/�������̽� 
-		   //File file = new File( path, data) ;
-			  response.setHeader("Content-Disposition","attachment;filename="+ URLEncoder.encode(img, "UTF-8") );
-		   InputStream is = new FileInputStream(file) ;
-		   OutputStream os = response.getOutputStream();
-		   
-		   //ǥ�ص�����Ÿ��=primitiveType  byte,int,double,boolean,char,long
-		   byte[] bt = new byte[(int)file.length()] ; //byteŸ���� 1����ƮŸ��
-		   is.read(bt,0,bt.length);
-		   os.write(bt); 
-		   
-		   is.close();
-		   os.close();
-		   }catch(Exception ex){  }  
-	 }
-	 
-//	 @RequestMapping("/download.do")
-//	 public void  board_download(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-//		 ModelAndView mav = new ModelAndView();
-//		 String data="";		
-//		 try {	
-//		  String filename=URLEncoder.encode(request.getParameter("fidx"), "UTF-8");
-//		  data=request.getParameter("idx");
-//		  System.out.println("\n�ٿ�ε� filename="+filename+" idx="+data);
-//		  
-//		  String path=application.getRealPath("/resources/upload");
-//		  System.out.println(path);
-//		 
-//		  filename=URLEncoder.encode(filename,"UTF-8");
-//	      response.setHeader("Content-Disposition", "attachment;filename="+filename);
-//		  File file=new File(path,filename);
-//		 
-//			 InputStream is=new FileInputStream(file);
-//			 OutputStream os=response.getOutputStream();
-//			 byte[ ] bt=new byte[(int)file.length()];
-//			
-//			 is.read(bt,0,bt.length);
-//			 os.write(bt);
-//			 
-//			 is.close(); os.close(); 
-//		  }catch(Exception ex) { }
-//		 String url="redirect:/boarDetail.do?idx="+data;
-//		 //return url;
-//		  //return "redirect:/boarDetail.do?idx="+data;
-//		  //mav.setViewName("redirect:/boarDetail.do?idx="+data);
-//		 RequestDispatcher dis=request.getRequestDispatcher(url);
-//		 //dis.forward(request, response);  ���������� 
-//		 dis.include(request, response);
-//	}//end
-//	 
-		@RequestMapping("/boardDelete.do")
-		public String board_delete(HttpServletRequest request) {
-			int data= Integer.parseInt(request.getParameter("Gidx"));
-			dao.dbDelete(data);
-			return "redirect:/boardList.do"; ///WEB-INF/views/boardDelete.jsp
-		}
-		
-
-		@RequestMapping("/boardUpdateBF.do")
-		public String board_updateBefor(HttpServletRequest request,Model model) {
-			int data= Integer.parseInt(request.getParameter("Gidx"));
-			model.addAttribute("dto", dao.dbDetail(data));
-			return "boardEdit"; ///WEB-INF/views/boardDelete.jsp
-		}
-
-		@RequestMapping("/boardUpdateAF.do")
-		public String board_updateaffter(customerDTO dto) {
-			 String path=application.getRealPath("/resources/upload");
-			  String img=dto.getUpload_f().getOriginalFilename();
-			  File file = new File(path, img);
-			  
-			  try{ dto.getUpload_f().transferTo(file); dto.setImg_file_name(img); }catch(Exception ex){  }  
-			   
-			  dao.dbUpdate(dto);
-//			  return "redirect:/boardList.do";
-			return "redirect:/boardDetail.do?Gidx="+dto.getHobby_idx(); ///WEB-INF/views/boardDelete.jsp
-		}
 }//BoardController class END
 
 

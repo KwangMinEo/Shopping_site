@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customer">	
+	
+<!-- 	<select id="selectAll" resultType="net.hb.crud.BoardDTO"> -->
+<!-- 	  select  rownum rn, h.*  from hobby h  -->
+<!-- 	</select> -->
+	
+	<select id="selectAll" parameterType="shopping.crud.customerDTO" resultType="shopping.crud.customerDTO">
+	   select  * from  (
+	     select  h.* from 
+	      (select * from QnA  where ${skey} like '%' ||  #{sval} ||  '%'  order by QnA_num desc) h
+	   ) where QnA_num between #{start} and  #{end} 
+	   
+	</select>
+	
+	<select id="countAll"  resultType="int">
+		select count(*) from QnA
+	</select>
+	
+	<select id="countAllSearch"  parameterType="shopping.crud.customerDTO"  resultType="int" >
+		select count(*) from QnA
+		where ${skey} like '%' || #{sval} || '%'  
+	</select>
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

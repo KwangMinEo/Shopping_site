@@ -50,6 +50,8 @@
 				<a href="">CUSTOMER CENTER</a>
 			</h1>
 		</div>
+
+
 		<div class="nav_cs">
 			<ul>
 				<li><a>자주묻는질문</a></li>
@@ -61,8 +63,46 @@
 			</ul>
 
 		</div>
-	</div>
 
+		<!--  -->
+		<div>
+			<table width=800 border=1 cellspacing=0>
+				<tr align="right">
+					<td colspan="3">레코드갯수: ${Gtotal}/${GGtotal} &nbsp;</td>
+				</tr>
+
+				<tr>
+					<td>번호</td>
+					<td>분류</td>
+					<td>제목</td>
+				</tr>
+
+				<c:forEach var="dto" items="${LG}">
+					<div class="accordion" id="accordionExample">
+						<div class="card">
+							<div class="card-header" id="headingOne">
+								<h5 class="mb-0">
+									<button class="btn btn-link" type="button"
+										data-toggle="collapse" data-target="#collapseOne"
+										aria-expanded="true" aria-controls="collapseOne">
+										<tr>
+											<td>${dto.QnA_num}</td>
+											<td>${dto.QnA_Kategorie}</td>
+											<td>${dto.QnA_title}</td>
+										</tr>
+									</button>
+								</h5>
+							</div>
+
+							<div id="collapseOne" class="collapse show"
+								aria-labelledby="headingOne" data-parent="#accordionExample">
+								<div class="card-body">${QnA_detail}</div>
+							</div>
+						</div>
+				</c:forEach>
+
+
+	</div>
 
 
 
