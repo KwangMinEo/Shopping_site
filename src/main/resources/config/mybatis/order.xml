@@ -4,6 +4,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="order">	
+    <insert id="add">
+     insert into order_detail values(
+     order_num_seq.nextval,#{user_id},#{product_id},#{product_name},#{option1}
+     ,#{option2},#{price},#{count},#{user_name},#{user_address1},#{user_address2},
+     #{user_phone},#{orderdate},#{status}
+     )
+    
+    </insert>
 	
 	<select id="selectproduct" parameterType="shopping.crud.order.orderDTO" resultType="shopping.crud.order.orderDTO">
 	  select * from product 
@@ -11,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectusers" parameterType="shopping.crud.order.orderDTO" resultType="shopping.crud.order.orderDTO">
-	  select * from users
+	  select * from users where user_id  = #{user_id}
 	 
 	</select>
 	
@@ -20,20 +28,3 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 
 </mapper>
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
