@@ -16,8 +16,6 @@ public class customerDTO {
 	private String QnA_Kategorie, QnA_title, QnA_detail ;
 	private String img_file_name;
 	private int rn, rcnt;
-	
 	private int start, end;  
 	private String skey, sval;
-	
 }//class END

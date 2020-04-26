@@ -77,7 +77,7 @@
 					<td>제목</td>
 				</tr>
 
-				<c:forEach var="dto" items="${LG}">
+				<c:forEach var="dto_customer" items="${list_customer}">
 					<div class="accordion" id="accordionExample">
 						<div class="card">
 							<div class="card-header" id="headingOne">
@@ -86,9 +86,9 @@
 										data-toggle="collapse" data-target="#collapseOne"
 										aria-expanded="true" aria-controls="collapseOne">
 										<tr>
-											<td>${dto.QnA_num}</td>
-											<td>${dto.QnA_Kategorie}</td>
-											<td>${dto.QnA_title}</td>
+											<td>${dto_customer.QnA_num}</td>
+											<td>${dto_customer.QnA_Kategorie}</td>
+											<td>${dto_customer.QnA_title}</td>
 										</tr>
 									</button>
 								</h5>
@@ -96,29 +96,24 @@
 
 							<div id="collapseOne" class="collapse show"
 								aria-labelledby="headingOne" data-parent="#accordionExample">
-								<div class="card-body">${QnA_detail}</div>
+								<div class="card-body">${dto_customer.QnA_detail}</div>
 							</div>
 						</div>
+					</div>
 				</c:forEach>
+			</table>
 
-
-	</div>
-
-
-
-
-	<!-- footer -->
-	<footer>
-		<div id="footer">
-			<c:import url="/footer.do" />
 		</div>
-	</footer>
 
 
 
 
 
-
-
+				<!-- footer -->
+				<footer>
+					<div id="footer">
+						<c:import url="/footer.do" />
+					</div>
+				</footer>
 </body>
 </html>

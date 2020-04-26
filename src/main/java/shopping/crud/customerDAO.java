@@ -16,31 +16,42 @@ public class customerDAO {
 //	  temp.insert("board.add", dto); 
 //	}//end	
 	
-	public List<customerDTO> dbSelect( ) {
+	public List<customerDTO> dbSelect_customer( ) {
 	  return temp.selectList("customer.selectAll");
 	}//end
 
-	public List<customerDTO> dbSelect(int start, int end) {
+	public List<customerDTO> dbSelect_customer(int start, int end) {
 	  customerDTO dto = new customerDTO();
 	  dto.setStart(start); 
 	  dto.setEnd(end);
 	  return temp.selectList("customer.selectAll",dto);
 	}//end
 	
-	public List<customerDTO> dbSelect(int start, int end, String skey, String sval) {      
+	public List<customerDTO> dbSelect_customer(int start, int end, String skey, String sval) {      
 		  customerDTO dto = new customerDTO();
 		  dto.setStart(start); 
 		  dto.setEnd(end);
 		  dto.setSkey(skey);
 		  dto.setSval(sval);
+
+			System.out.println("------------------------");
+			System.out.println(dto.getStart() + "다오");
+			System.out.println(dto.getEnd() + "다오");
+			System.out.println(dto.getSkey() + "다오");
+			System.out.println(dto.getSval() + "다오");
+			System.out.println("------------------------");
+
+			System.out.println("------------------------ 리스트 체크");
+			System.out.println(temp.selectList("customer.selectAll",dto));
+			System.out.println("------------------------");
 		  return temp.selectList("customer.selectAll",dto);
 		}//end
 		
-	public int dbCount() {
+	public int dbCount_customer() {
 	  return temp.selectOne("customer.countAll");
 	}//end
 	
-	public int dbCountSearch(String skey, String sval) {
+	public int dbCountSearch_customer(String skey, String sval) {
 		   customerDTO dto = new customerDTO();
 		   dto.setSkey(skey);
 		   dto.setSval(sval);

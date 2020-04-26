@@ -34,7 +34,6 @@ public class customerController {
 	//��Ʈ�ѹ��� dao��ü����
 	@Inject
 	@Autowired
-	//BoardDAO dao;  ����
 	customerDAO dao; 
 	
 	
@@ -77,9 +76,9 @@ public class customerController {
 		 
 		pageNUM=Integer.parseInt(pnum); //[21]~[27����]~[30]
 		
-		int GGtotal = dao.dbCount(); //��ü���ڵ尹�� 342��
-		int Gtotal = dao.dbCountSearch(skey, sval); //��ȸ���ڵ尹��
-		int Stotal = dao.dbCountSearch(skey, sval); //��ȸ���ڵ尹��
+		int GGtotal = dao.dbCount_customer(); //��ü���ڵ尹�� 342��
+		int Gtotal = dao.dbCountSearch_customer(skey, sval); //��ȸ���ڵ尹��
+		int Stotal = dao.dbCountSearch_customer(skey, sval); //��ȸ���ڵ尹��
 		
 		start=(pageNUM-1)*10+1;
 		end=pageNUM*10;
@@ -93,13 +92,25 @@ public class customerController {
 		endpage=startpage+9;
 		if(endpage>pagecount) { endpage=pagecount; }
 		
-		List<customerDTO> LG = dao.dbSelect();
-		//List<BoardDTO> LG = dao.dbSelect(start,end);
-//		List<customerDTO> LG = dao.dbSelect(start,end,skey,sval);
+//		List<customerDTO> list_customer = dao.dbSelect_customer();
+//		List<customerDTO> list_customer = dao.dbSelect_customer(start,end);
+		List<customerDTO> list_customer = dao.dbSelect_customer(start,end,skey,sval);
+
+		System.out.println("------------------------");
+		System.out.println(start + "컨트롤러");
+		System.out.println(end + "컨트롤러");
+		System.out.println(skey + "컨트롤러");
+		System.out.println(sval + "컨트롤러");
+		System.out.println("------------------------");
+		
+		customerDTO dtto = new customerDTO();
+		System.out.println("------------------------ 컨트롤러 리스트 체크");
+		System.out.println(list_customer);
+		System.out.println("------------------------");
 		
 		model.addAttribute("Gtotal", Gtotal); //��ȸ����
 		model.addAttribute("GGtotal", GGtotal); //��ü����
-		model.addAttribute("LG", LG);
+		model.addAttribute("list_customer", list_customer);
 		model.addAttribute("pageNUM", pageNUM);
 		model.addAttribute("startpage", startpage);
 		model.addAttribute("endpage", endpage);
@@ -107,7 +118,7 @@ public class customerController {
 		model.addAttribute("skey", skey);
 		model.addAttribute("sval", sval);	
 		model.addAttribute("returnpage", returnpage);
-	    return "customerList"; 
+	    return "customer_center"; 
 	}//end
 
 	
