@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="order">	
     <insert id="add">
      insert into order_detail values(
-     order_num_seq.nextval,#{user_id},#{product_id},#{product_name},#{option1}
+     order_num_seq.nextval,#{user_id},#{product_id},#{product_name},#{product_img},#{option1}
      ,#{option2},#{price},#{count},#{user_name},#{user_address1},#{user_address2},
-     #{user_phone},#{orderdate},#{status}
+     #{user_phone},sysdate,#{status}
      )
     
     </insert>

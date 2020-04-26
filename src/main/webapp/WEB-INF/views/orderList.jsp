@@ -14,9 +14,9 @@
 		for(var x=0;x<items.length;x++){
 			if(items[x].checked)
 				sum += parseInt(items[x].value);
-		}
+		}//for end
 		myform.price.value=sum;
-        } 
+        } //function end
 </script>
 <style type="text/css">
 .scale{
@@ -36,11 +36,12 @@ transform:scale(1.2);
 -o-transform:scale(1.2);
 
 }
+.sa{font-size:12pt;color:red;}
 </style>	
 </head>
 <body>
 <div class="container">
-<form name="myform" action="">
+<form name="myform" action="orderInsert.do" method="get">
 <font size="15" color="blue" >주문/결제</font>
 <hr size="9" color="grey" style="width:60%" align="left">
  <table width=900  border=2  cellspacing=1 >
@@ -53,16 +54,17 @@ transform:scale(1.2);
 <%--   <c:set var="total" value="0"/> --%>
   <c:forEach var="order" items="${product}" varStatus="status">
   
-  <tr><td rowspan="6" align="center"><input type="checkbox" id="chk1" name="item" value="${order.product_price } " onclick="getsum();"></td></tr>
+  <tr><td rowspan="7" align="center"><input type="checkbox"  name="item" value="${order.product_price } " onclick="getsum();"></td></tr>
   <tr>
-  <td rowspan="5"  align="center" >
-    <img  src="${order.product_img1}" width="200" height="150" class="scale" >
+  <td rowspan="6"  align="center" >
+    <img  src="${order.product_img1}" width="200" height="150" class="scale"  >
   </td>
   </tr>
-  <tr><td colspan="2">상품이름:<input type="text" name="product_name" value="${order.product_name}" readonly></td></tr>
+  <tr><td colspan="2">상품번호 &nbsp;:<input type="text" name="product_id" value="${order.product_id}" readonly></td></tr>
+  <tr><td colspan="2">상품이름 &nbsp;:<input type="text" name="product_name" value="${order.product_name}" readonly></td></tr>
   <tr><td colspan="2">상품옵션1:<input type="text" name="option1" value="${order.product_color}" ></td></tr>
   <tr><td colspan="2">상품옵션2:<input type="text" name="option2" value="${order.product_size}" ></td></tr>
-  <tr><td colspan="2">상품가격:<input type="text" name="product_price"  value="${order.product_price }" readonly></td></tr>
+  <tr><td colspan="2">상품가격 &nbsp;:<input type="text" name="product_price"  value="${order.product_price }" readonly></td></tr>
 <%--   <input type="hidden" value ="${total = total + order.product_price }"> --%>
   </c:forEach>
 <%--   <tr><td colspan="3">총금액 : <input type="text" name="price"  size=10  value="${total }"  readonly></td></tr> --%>
@@ -91,11 +93,12 @@ transform:scale(1.2);
  <td><input type="text" name="user_phone" value="${users.user_phone}" ></td>
  </tr>
  
-   <tr align="center">
-  	 <td colspan="5" align="left">
-  	  	배송상황: <font color="red">주문중</font>
-  	</td>
+   <tr align="center" >
+  	 <td colspan="3" align="left" >
+  	  	배송상황: <input type="text" name="status" value="주문중" class="sa" readonly >
+  	</td  >
    </tr>
+  
    <tr>
    <td align="center" colspan="3">
          <input type="submit" value="결제">&nbsp;
