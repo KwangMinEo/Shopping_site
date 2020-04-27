@@ -60,8 +60,6 @@ transform:scale(1.2);
   <tr><td >상품이름 &nbsp;:${order.product_name}</td></tr>
   <tr><td >상품옵션1:${order.product_color}</td></tr>
   <tr><td >상품옵션2:${order.product_size}</td></tr>
-  
-  
   </c:forEach>
 
   <tr><td colspan="3">총금액 : <span id="sum">0</span>원</td></tr>
