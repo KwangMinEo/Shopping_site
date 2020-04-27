@@ -19,7 +19,22 @@
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+<script type="text/javascript">
+$(window).ready(function(){
+	 var sessionCK = "${shopping_id}";
+	if( sessionCK != "null"){
+		$(document).ready(function(){
+			  $('.user_out').show()
+			  $('.user_in').hide()
+		  });
+	}else {
+		$(document).ready(function(){
+			  $('.user_out').hide()
+			  $('.user_in').show()
+		  });
+		}
+});
+</script>
 </head>
 
 
@@ -51,7 +66,7 @@
 						<li class="Cart"><a class="text-secondary" href=""> <i
 								class="fa fa-shopping-cart" aria-hidden="true">장바구니</i>
 						</a></li> |
-						<li class="login"><a class="text-secondary" href=""> <i
+						<li class="login"><a class="text-secondary" href="login.do"> <i
 								class="fa fa-sign-in" aria-hidden="true">로그인</i>
 						</a></li>
 					</ul>

@@ -107,7 +107,7 @@ public class Join_Controller1 {
 		
 		String result=joinDAO.dbSelect_login(dto);	
 		System.out.println("로그인컨트롤처리 다오처리후=" + result);
-		session.setAttribute("daum",result );
+		session.setAttribute("shopping_id",result );
 		
 		
 		if(result==null || result=="" || result.equals("") ){
@@ -122,7 +122,7 @@ public class Join_Controller1 {
 		String prev_url = (String)session.getAttribute("path");
 		System.out.println(prev_url + "컨트롤러에서 ");
 		//성공한 후 메인페이지로 이동
-		return "redirect:" + prev_url;
+		return "redirect:home.do";
 	}//end
 	
 	// 로그아웃
