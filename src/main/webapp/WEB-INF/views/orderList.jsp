@@ -5,18 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="resources/script/cart.js" />
 <meta charset="UTF-8">
 <title> [orderList.jsp] </title>
 <script type="text/javascript">
-      function getsum(){   
-		var items = document.getElementsByName("item");
-		var sum = 0 ;
-		for(var x=0;x<items.length;x++){
-			if(items[x].checked)
-				sum += parseInt(items[x].value);
-		}//for end
-		myform.price.value=sum;
-        } //function end
+  
+        
 </script>
 <style type="text/css">
 .scale{
@@ -41,34 +37,34 @@ transform:scale(1.2);
 </head>
 <body>
 <div class="container">
-<form name="myform" action="orderInsert.do" method="get">
+<form name="myform" action="orderInsert.do" method="post" enctype="multipart/form-data">
 <font size="15" color="blue" >주문/결제</font>
 <hr size="9" color="grey" style="width:60%" align="left">
- <table width=900  border=2  cellspacing=1 >
+ <table width=900  border=1 cellspacing=0 >
+  <tr><td colspan="3"><input type="checkbox" id="allcheck"></td></tr> 
   <tr bgcolor="orange">
-  <td colspan="4">
+  <td colspan="3">
   <font size="6">상품정보</font>
   </td>
   </tr>
   
-<%--   <c:set var="total" value="0"/> --%>
+  
   <c:forEach var="order" items="${product}" varStatus="status">
   
-  <tr><td rowspan="7" align="center"><input type="checkbox"  name="item" value="${order.product_price } " onclick="getsum();"></td></tr>
   <tr>
-  <td rowspan="6"  align="center" >
-    <img  src="${order.product_img1}" width="200" height="150" class="scale"  >
-  </td>
+  <td rowspan="5" align="center"><input type="checkbox"  name="select" ></td>
+  <td rowspan="5" align="center"><img  src="${order.product_img1}" width="200" height="150" class="scale"  ></td>
+  <td>상품번호 &nbsp;:${order.product_id}</td>
   </tr>
-  <tr><td colspan="2">상품번호 &nbsp;:<input type="text" name="product_id" value="${order.product_id}" readonly></td></tr>
-  <tr><td colspan="2">상품이름 &nbsp;:<input type="text" name="product_name" value="${order.product_name}" readonly></td></tr>
-  <tr><td colspan="2">상품옵션1:<input type="text" name="option1" value="${order.product_color}" ></td></tr>
-  <tr><td colspan="2">상품옵션2:<input type="text" name="option2" value="${order.product_size}" ></td></tr>
-  <tr><td colspan="2">상품가격 &nbsp;:<input type="text" name="product_price"  value="${order.product_price }" readonly></td></tr>
-<%--   <input type="hidden" value ="${total = total + order.product_price }"> --%>
+  <tr><td >상품가격 &nbsp;:<span calss="total">${order.product_price }</span>원</td></tr>
+  <tr><td >상품이름 &nbsp;:${order.product_name}</td></tr>
+  <tr><td >상품옵션1:${order.product_color}</td></tr>
+  <tr><td >상품옵션2:${order.product_size}</td></tr>
+  
+  
   </c:forEach>
-<%--   <tr><td colspan="3">총금액 : <input type="text" name="price"  size=10  value="${total }"  readonly></td></tr> --%>
-  <tr><td colspan="3">총금액 : <input type="text"   name="price" size=10  value="" readonly></td></tr>
+
+  <tr><td colspan="3">총금액 : <span id="sum">0</span>원</td></tr>
   
  </table><p>
  
