@@ -37,11 +37,15 @@ transform:scale(1.2);
 </head>
 <body>
 <div class="container">
+
 <form name="myform" action="orderInsert.do" method="post" enctype="multipart/form-data">
 <font size="15" color="blue" >주문/결제</font>
 <hr size="9" color="grey" style="width:60%" align="left">
  <table width=900  border=1 cellspacing=0 >
-  <tr><td colspan="3"><input type="checkbox" id="allcheck"></td></tr> 
+  <tr>
+  <td colspan="3"><input type="checkbox" id="allcheck"><font size="3pt" color="blue">전체선택</font></td>
+  
+  </tr> 
   <tr bgcolor="orange">
   <td colspan="3">
   <font size="6">상품정보</font>
@@ -56,7 +60,7 @@ transform:scale(1.2);
   <td rowspan="5" align="center"><img  src="${order.product_img1}" width="200" height="150" class="scale"  ></td>
   <td>상품번호 &nbsp;:${order.product_id}</td>
   </tr>
-  <tr><td >상품가격 &nbsp;:<span calss="total">${order.product_price }</span>원</td></tr>
+  <tr><td >상품가격 &nbsp;:<span class="total">${order.product_price }</span>원</td></tr>
   <tr><td >상품이름 &nbsp;:${order.product_name}</td></tr>
   <tr><td >상품옵션1:${order.product_color}</td></tr>
   <tr><td >상품옵션2:${order.product_size}</td></tr>
@@ -96,7 +100,7 @@ transform:scale(1.2);
    <tr>
    <td align="center" colspan="3">
          <input type="submit" value="결제">&nbsp;
-  	  	 <input type="reset" value="취소">
+  	  	 <input type="reset" value="취소" onclick="relly();">
   	</td>
   	</tr>
  </table>

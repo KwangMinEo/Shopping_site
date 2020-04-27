@@ -3,7 +3,7 @@
  */
 
 $(function(){
-	var price = 0;
+	
 	var total = 0;
 	
 //	$('select').on("change", function(){
@@ -14,11 +14,11 @@ $(function(){
 //	});
 	
 	$('#allcheck').change(function(){
+		
 		if($('#allcheck').is(":checked")){
 			$('input:checkbox[name="select"]').each(function(){
 				this.checked = true;
 				total += Number($(this).parent().parent().next().find('.total').text());
-				
 			});
 			$('#sum').html(total);
 		}else{
@@ -31,11 +31,11 @@ $(function(){
 	});
 	
 	$('input:checkbox[name="select"]').on("change", function(){
-		alert('abcdef');
+		
 		if($(this).is(":checked")){
 			this.checked = true;
 			total += Number($(this).parent().parent().next().find('.total').text());
-			alert(total);
+			
 			$('#sum').html(total);
 		}else{
 			this.checked = false;
@@ -46,7 +46,7 @@ $(function(){
 	
 });
 
-function itemDelete(){
+function relly(){
+    $('#sum').html(0);
 	
-	alert('삭제');
 }
