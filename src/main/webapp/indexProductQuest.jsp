@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title></title>
 	<script type="text/javascript">
+	
 		//setTimeout("location.href='productReviewList.do'",2000);
 		setTimeout("location.href='productQuestList.do'",2000);
 	</script>

@@ -92,6 +92,12 @@ public class ProductReviewController {
 		return "redirect:/productReviewList.do";
 	}//end
 
+	@RequestMapping("/productReviewDelete.do")
+	public String quest_insert(@RequestParam("rid") int questnum) {
+		pdao.dbDelete(questnum);
+		return "redirect:/productReviewList.do";
+	}//end
+	
 }//BoardReplyController class END
 
 

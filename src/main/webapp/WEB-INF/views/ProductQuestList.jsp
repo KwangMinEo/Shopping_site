@@ -46,7 +46,9 @@
 					    <c:when test="${questpwd==bean.pwd && questnum==bean.product_quest_num}">
 					    	${bean.content} <p>
 					    	<a href="productQuestOut.do">[확인완료]</a><p>
-					    	<a href="productQuestDelete.do?qid=${bean.product_quest_num}">[삭제]</a>				    	
+					    	<a href="productQuestDelete.do?qid=${bean.product_quest_num}">[삭제]</a>
+					    	
+					    	<c:import url="/productquestrep_list.do?pqr=${questnum}" /> 				    	
 					    </c:when>	
 					    <c:otherwise>					    
 						    <form action="productQuestPwd.do">

@@ -15,6 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="countAll" resultType="int">
 		select count(*) from product_review
 	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from product_review where review_num=#{review_num}
+	</delete>
 </mapper>
 	
 

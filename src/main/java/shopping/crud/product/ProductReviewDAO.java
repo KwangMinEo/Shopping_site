@@ -34,4 +34,8 @@ SqlSessionTemplate temp;
 	}//end
 	
 
+ 	public int dbDelete(int qid) {	
+ 		return temp.delete("review.delete",qid);
+	}//end
+ 	
 }//LoginDAO end

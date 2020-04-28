@@ -113,13 +113,8 @@ public class ProductQuestController {
 	}//end
 	
 	@RequestMapping("/productQuestDelete.do")
-	public String quest_insert(@RequestParam("qid") int questnum, HttpServletResponse response) throws Exception{
+	public String quest_insert(@RequestParam("qid") int questnum) {
 		pdao.dbDelete(questnum);
-		response.setContentType("text/html; charset=utf-8");
-		response.getWriter().append("<script>"
-			   + "alert('삭제완료!');"
-			   + "window.history.back();"
-			   + "</script>").flush();
 		return "redirect:/productQuestList.do";
 	}//end
 	
