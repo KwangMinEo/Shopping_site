@@ -110,7 +110,7 @@
 				
 			</tr>
 			<tr>
-				<td><input type="hidden" name="product_id" value="100a100"></td>
+				<td><input type="hidden" name="product_id" value="101a00001"></td>
 				<td><input type="hidden" name="user_id" value="blue"></td>
 			</tr>
 			<tr>

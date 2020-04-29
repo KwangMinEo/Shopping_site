@@ -32,7 +32,7 @@ public class ProductQuestController {
 	
 	
 	@RequestMapping(value="/productQuestList.do")
-	public String quest_select(HttpServletRequest request, Model model) {
+	public String quest_select(HttpServletRequest request, Model model, @RequestParam("prid") String prid) {
 		String pnum;
 		 int pageNUM, pagecount;
 		 int start, end; 
@@ -63,7 +63,7 @@ public class ProductQuestController {
 	
 		
 		
-		List<ProductQuestDTO> PD = pdao.dbSelect(start,end);
+		List<ProductQuestDTO> PD = pdao.dbSelect(start,end,prid);
 		model.addAttribute("pageNUM", pageNUM);
 		model.addAttribute("startpage", startpage);
 		model.addAttribute("endpage", endpage);
@@ -92,13 +92,13 @@ public class ProductQuestController {
 				   + "window.history.back();"
 				   + "</script>").flush();
 			return "redirect:/productQuestList.do";
-		}return "redirect:/productQuestDetail.do?qid="+dto.getProduct_quest_num();	
+		}return "redirect:/productDetail.do?pid=101a00001";	
 	}
 	
 	@RequestMapping(value="/productQuestOut.do")
 	public String quest_remove( HttpSession session) {	
 		session.removeAttribute("questpwd");
-		return "redirect:/productQuestList.do";
+		return "redirect:/productDetail.do?pid=101a00001";
 	}//end
 	
 	@RequestMapping(value = "/productQuest.do")
@@ -109,7 +109,7 @@ public class ProductQuestController {
 	@RequestMapping("/productQuestInsert.do")
 	public String quest_insert(ProductQuestDTO dto) {
 		pdao.dbInsert(dto);
-		return "redirect:/productQuestList.do";
+		return "redirect:/productDetail.do?pid=101a00001";
 	}//end
 	
 	@RequestMapping("/productQuestDelete.do")

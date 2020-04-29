@@ -31,7 +31,7 @@ public class ProductReviewController {
 	
 	
 	@RequestMapping(value="/productReviewList.do")
-	public String productR_select(HttpServletRequest request, Model model) {
+	public String productR_select(HttpServletRequest request, Model model, @RequestParam("prid") String prid) {
 		 String pnum;
 		 int pageNUM, pagecount;
 		 int start, end; 
@@ -62,7 +62,7 @@ public class ProductReviewController {
 	
 		
 		
-		List<ProductReviewDTO> PD = pdao.dbSelect(start,end);
+		List<ProductReviewDTO> PD = pdao.dbSelect(start,end,prid);
 		 model.addAttribute("pageNUM", pageNUM);
 		 model.addAttribute("startpage", startpage);
 		 model.addAttribute("endpage", endpage);
@@ -88,13 +88,13 @@ public class ProductReviewController {
 		}catch (Exception e) {System.out.println(e);	}		
 		dto.setFile1(img);
 		pdao.dbInsert(dto);
-		return "redirect:/productReviewList.do";
+		return "redirect:/productDetail.do?pid=101a00001";
 	}//end
 
 	@RequestMapping("/productReviewDelete.do")
 	public String quest_insert(@RequestParam("rid") int questnum) {
 		pdao.dbDelete(questnum);
-		return "redirect:/productReviewList.do";
+		return "redirect:/productDetail.do?pid=101a00001";
 	}//end
 	
 }//BoardReplyController class END

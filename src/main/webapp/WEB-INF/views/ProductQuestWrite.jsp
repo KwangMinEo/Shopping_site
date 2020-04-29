@@ -49,7 +49,7 @@
 				<td class="td2"><textarea name="content" rows="12" cols="57" placeholder="내용을 적어주세요.2000자 내" class="noborder"></textarea></td>
 			</tr>
 			<tr>				
-				<td><input type="text" name="product_id" value="kim"></td> 		
+				<td><input type="text" name="product_id" value="101a00001"></td> 		
 			</tr>	
 		</table>	
 	 	  <input type="button" class="button" value="작성완료" onclick="check();">&nbsp;&nbsp;
