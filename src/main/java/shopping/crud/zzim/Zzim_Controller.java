@@ -34,7 +34,7 @@ public class Zzim_Controller {
 	}// end
 
 	@RequestMapping("/zzimInsert.do")
-	public void zzim_insert(HttpServletRequest request, ModelAndView mov, HttpSession session, HttpServletResponse response) { // 바로구매
+	public String zzim_insert(HttpServletRequest request, HttpSession session, HttpServletResponse response) { // 바로구매
 		
 		ArrayList<ZzimDTO> product = new ArrayList<ZzimDTO>();
 		String userId = (String) session.getAttribute("userId");
@@ -61,21 +61,20 @@ public class Zzim_Controller {
 
 			try {
 				zzimDAO.dbInsertZzim(dto);
-			} catch (Exception e) {
-				return;
-			}
+			} catch (Exception e) {}
 
 		} // for end
 
-		response.setContentType("text/html; charset=utf-8");
+		
 		try {
+			response.setContentType("text/html; charset=utf-8");
 			response.getWriter().append("<script> var result=confirm('성공적으로 상품을 추가하였습니다.<br>찜리스트로 이동하시겠습니까?');"
-				   + "if(result){location.href='zzimList.do';}else{ return; }").flush();
+				   + "if(result){location.href='zzimList.do';}else{ history.back(); } </script>").flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return;
+		return "productDetail.do?pid="+pid[0];
 	}//zzim_Insert end
 
 	@RequestMapping("/zzimList.do")

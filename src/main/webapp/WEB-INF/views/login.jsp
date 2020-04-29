@@ -76,9 +76,9 @@
 	<div class="container contents">
  
 		 <div id="msg" align="center">
+		 <form action="loginprocess.do" name="login_form">
 		 <table  width=750 border=1 cellspacing=0 align="center">
-		   <form action="loginprocess.do" name="login_form">
-		     <tr>
+	     	<tr>
 			  <td width="450"> userid:</td>
 			  <td width="250"> <input type="text"  name="user_id" id="user_id" placeholder="ID" required oninput="setCustomValidity('')"></td>
 					
@@ -91,8 +91,9 @@
 			  <td>userpw:</td>
 			  <td> <input type="password"  name="user_pwd" id="user_pwd" placeholder="Password" required oninput="setCustomValidity('')"></td>
 			</tr>
-		    </form>
+		    
 		 </table>
+		 </form>
 		
 		</div>
 

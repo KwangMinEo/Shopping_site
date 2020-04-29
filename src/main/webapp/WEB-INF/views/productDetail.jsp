@@ -74,6 +74,7 @@
 			} else {
 				form.attr("action", "order.do");
 				form.submit();
+				
 			}
 
 		});
