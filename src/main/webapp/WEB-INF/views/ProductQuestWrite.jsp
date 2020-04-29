@@ -34,7 +34,7 @@
 <body>
  	<div class="container">
 		<font color=blue>[ProductQuestWrite.jsp]</font> <p>
-	 	<form name="myform" action="productQuestInsert.do" >
+	 	<form name="myform" action="productQuestInsert.do?prid=${prid}" >
 	 	<table class="table table-hover" style="border: 1px solid #D8D8D8;">	
 			<tr>				
 				<td class="td1">비밀번호</td>

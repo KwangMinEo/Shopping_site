@@ -74,7 +74,7 @@ public class ProductQuestController {
 	}//end
 	
 	@RequestMapping(value="/productQuestDetail.do")
-	public String quest_detail(@RequestParam("qid") int data, Model model) {
+	public String quest_detail(@RequestParam("qid") int data, Model model, @RequestParam("prid") String prid) {
 		model.addAttribute("dto",pdao.dbDetail(data));
 		return "redirect:/productQuestList.do";
 	}//end
@@ -96,7 +96,7 @@ public class ProductQuestController {
 	}
 	
 	@RequestMapping(value="/productQuestOut.do")
-	public String quest_remove( HttpSession session) {	
+	public String quest_remove( HttpSession session, @RequestParam("prid") String prid) {	
 		session.removeAttribute("questpwd");
 		return "redirect:/productDetail.do?pid=101a00001";
 	}//end
@@ -108,15 +108,15 @@ public class ProductQuestController {
 	}//end
 	
 	@RequestMapping("/productQuestInsert.do")
-	public String quest_insert(ProductQuestDTO dto) {
+	public String quest_insert(ProductQuestDTO dto, @RequestParam("prid") String prid) {
 		pdao.dbInsert(dto);
-		return "redirect:/productDetail.do?pid=101a00001";
+		return "redirect:/productDetail.do?pid="+prid;
 	}//end
 	
 	@RequestMapping("/productQuestDelete.do")
-	public String quest_insert(@RequestParam("qqid") int qqid) {
+	public String quest_insert(@RequestParam("qqid") int qqid, @RequestParam("prid") String prid) {
 		pdao.dbDelete(qqid);
-		return "redirect:/productQuestList.do";
+		return "redirect:/productDetail.do?pid="+prid;
 	}//end
 	
 }//BoardReplyController class END
