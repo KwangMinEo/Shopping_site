@@ -120,6 +120,8 @@ public class Join_Controller1 {
 			return "redirect:/login.do";
 		}
 		String prev_url = (String)session.getAttribute("path");
+		session.setAttribute("userId",dto.getUser_id() );
+		session.setAttribute("userEmail",dto.getUser_email() );
 		System.out.println(prev_url + "컨트롤러에서 ");
 		//성공한 후 메인페이지로 이동
 		return "redirect:" + prev_url;

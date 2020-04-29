@@ -76,7 +76,7 @@
 	</header>
 
 
-	<div class="contents">
+	<div class="container contents">
  
 		 <div id="msg" align="center">
 		 <table  width=750 border=1 cellspacing=0 align="center">

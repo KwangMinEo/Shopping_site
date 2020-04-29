@@ -21,6 +21,7 @@
 	text-align: center;
 }
 </style>
+<link rel="stylesheet" href="./resources/css/Home_css.css">
 
 <script type="text/javascript">
 
@@ -71,7 +72,7 @@
 		$("button#zzimBtn").click(function(e) {//찜리스트 추가 버튼 클릭시
 			e.preventDefault();
 			var name1 = $("#product_name").val();
-			var form = $("#formproductSelected");
+			var form = $("form#productSelected");
 			if (name1 == "" || name1 == null) {
 				alert('상품을 선택하세요');
 				return;
@@ -96,12 +97,11 @@
 		</div>
 	</header>
 	
-	<div class="conatainer-float" id="category"></div>
 
-	<div class="container" id="productDetail">
+	<div class="container contents" id="productDetail">
 		<div class="row row-cols-2">
 			<div class="col">
-				<img src="${dto.product_img1}" width="500" height="600">
+				<img src="${dto.product_img1}" width="500px" height="600px">
 			</div>
 			<div class="col">
 
@@ -135,8 +135,7 @@
 						<th>옵션1</th>
 						<td><select id="option1" name="option1" size=1 >
 								<option value="">---[필수]색상을 선택하세요---</option>
-								<c:forTokens items="${dto.product_color }" var="colorOption"
-									delims=",">
+								<c:forTokens items="${dto.product_color }" var="colorOption" delims=",">
 									<option value="${colorOption }">${colorOption }</option>
 								</c:forTokens>
 						</select></td>
@@ -145,8 +144,7 @@
 						<th>옵션2</th>
 						<td><select id="option2" name="option2" size=1>
 								<option value="">---[필수]사이즈를 선택하세요---</option>
-								<c:forTokens items="${dto.product_size }" var="sizeOption"
-									delims=",">
+								<c:forTokens items="${dto.product_size }" var="sizeOption" delims=",">
 									<option value="${sizeOption }">${sizeOption }</option>
 								</c:forTokens>
 						</select></td>
@@ -191,12 +189,12 @@
 			<h4>제품 상세정보</h4>
 			<br><br>
 			
-				<img src="${dto.product_img1 }" style="width:50%; height:50%; margin:1rem;">
+				<img src="${dto.product_img1 }" style="width:500px; height:600px; margin:1rem;">
 			<br><br>
-				<img src="${dto.product_img2 }" style="width:50%; height:50%; margin:1rem;">
+				<img src="${dto.product_img2 }" style="width:500px; height:600px; margin:1rem;">
 			<br><br>${dto.product_desc }
 			<br><br>
-				<img src="${dto.product_img3 }" style="width:50%; height:50%; margin:1rem;">
+				<img src="${dto.product_img3 }" style="width:500px; height:600px; margin:1rem;">
 			<br><br><br><br>
 			<p>
 		</div>

@@ -19,6 +19,7 @@ public class ZzimDTO {
 	private String user_email;
 	private int price ;
 	private int count ;
+	private String img1;
 	
 	
 	
@@ -78,12 +79,6 @@ public class ZzimDTO {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public String getImg1() {
-		return img1;
-	}
-	public void setImg1(String img1) {
-		this.img1 = img1;
-	}
-	private String img1;
+	
 
 }//ZzimDTO class End
