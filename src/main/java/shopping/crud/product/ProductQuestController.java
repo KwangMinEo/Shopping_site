@@ -68,7 +68,7 @@ public class ProductQuestController {
 		model.addAttribute("startpage", startpage);
 		model.addAttribute("endpage", endpage);
 		model.addAttribute("pagecount", pagecount);
-		
+		model.addAttribute("prid", prid);
 		model.addAttribute("PD",PD);
 		return "ProductQuestList";
 	}//end
@@ -102,7 +102,8 @@ public class ProductQuestController {
 	}//end
 	
 	@RequestMapping(value = "/productQuest.do")
-	public String quest_write() {
+	public String quest_write(@RequestParam("prid") String prid,Model model) {
+		model.addAttribute("prid",prid);
 		return "ProductQuestWrite";
 	}//end
 	

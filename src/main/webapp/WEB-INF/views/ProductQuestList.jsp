@@ -98,9 +98,8 @@
 	
 	</table>
 	<p>
-	<a href="productQuest.do">[문의하기]</a>
-    <a href="productReviewList.do">[리뷰]</a>
-    <a href="productQuestList.do">[문의]</a>
+	<a href="productQuest.do?prid=${prid}">[문의하기]</a>
+   
 </div>
 
 

@@ -103,9 +103,7 @@
 	
 	
 	<p>
-	 <a href="productReview.do">[글쓰기]</a>
-     <a href="productReviewList.do">[리뷰]</a>
-   	 <a href="productQuestList.do">[문의]</a>
+	 <a href="productReview.do?prid=${prid}">[글쓰기]</a>
 </div>
 
 

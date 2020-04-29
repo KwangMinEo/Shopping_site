@@ -110,8 +110,8 @@
 				
 			</tr>
 			<tr>
-				<td><input type="hidden" name="product_id" value="101a00001"></td>
-				<td><input type="hidden" name="user_id" value="blue"></td>
+				<td><input type="hidden" name="product_id" value="${prid}"></td>
+				<td><input type="text" name="user_id" value="${userId}"></td>
 			</tr>
 			<tr>
 				<td class="td1">내용</td>
@@ -128,8 +128,7 @@
 
 		<p>
 	  	<a href="productReview.do">[글쓰기]</a>
-    	<a href="productReviewList.do">[리뷰]</a>
-   	 	<a href="productQuestList.do">[문의]</a>
+   
 	</div>
 </body>
 </html>

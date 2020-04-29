@@ -67,14 +67,14 @@ public class ProductReviewController {
 		 model.addAttribute("startpage", startpage);
 		 model.addAttribute("endpage", endpage);
 		 model.addAttribute("pagecount", pagecount);
-		
-		 
+		 model.addAttribute("prid", prid); 
 		 model.addAttribute("PD",PD);
 		 return "ProductReviewList";
 	}//end
 	
 	@RequestMapping(value="/productReview.do")
-	public String productR_write() {	
+	public String productR_write(@RequestParam("prid") String prid,Model model) {
+		model.addAttribute("prid", prid);
 		return "ProductReviewWrite";
 	}//end
 	
