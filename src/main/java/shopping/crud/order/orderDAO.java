@@ -32,4 +32,4 @@ public class orderDAO {
 	public void dbdelete(int data) {
 		temp.delete("order.del",data);
 	}
-}//orderDAO end
+}// class end
