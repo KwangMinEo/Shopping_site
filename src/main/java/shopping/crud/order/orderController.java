@@ -32,8 +32,8 @@ public class orderController {
 	@RequestMapping("/order.do")
 	public ModelAndView order_write(HttpServletRequest request, ModelAndView mov ) { //바로구매
 		ArrayList<orderDTO> product = new ArrayList<orderDTO>();
-		String pid = request.getParameter("pid");
-		String pimg = request.getParameter("pimg");
+		String[] pid = request.getParameterValues("pid");
+		String[] pimg = request.getParameterValues("pimg");
 		String[] pname = request.getParameterValues("product_name");
 		String[] poption1 = request.getParameterValues("product_option1");
 		String[] poption2 = request.getParameterValues("product_option2");
@@ -43,8 +43,8 @@ public class orderController {
 		
 		for(int i = 0; i<pname.length; i++) {
 			orderDTO odto = new orderDTO();
-			odto.setProduct_id(pid);
-			odto.setProduct_img1(pimg);
+			odto.setProduct_id(pid[i]);
+			odto.setProduct_img1(pimg[i]);
 			odto.setProduct_name(pname[i]);
 			odto.setProduct_color(poption1[i]);
 			odto.setProduct_size(poption2[i]);
