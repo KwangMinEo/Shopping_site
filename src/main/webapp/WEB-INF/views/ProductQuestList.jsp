@@ -57,12 +57,12 @@
 						    </c:when>
 						    <c:when test="${questpwd==bean.pwd && questnum==bean.product_quest_num}">
 						    	${bean.content} <p>
-						    	<a href="productQuestOut.do">[확인완료]</a><p>
+						    	<a href="productQuestOut.do?prid=${prid}">[확인완료]</a><p>
 						    	<a href="productQuestDelete.do?qqid=${bean.product_quest_num}&prid=${prid}">[삭제]</a>
 						    			    	
 						    </c:when>	
 						    <c:otherwise>					    
-							    <form action="productQuestPwd.do">
+							    <form action="productQuestPwd.do?prid=${prid}" method="post">
 								    <input type="hidden" name="product_quest_num" value="${bean.product_quest_num}">
 								    <input type="password" name="pwd">
 								    <button type="submit" >ok</button>

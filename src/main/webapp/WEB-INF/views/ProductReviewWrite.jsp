@@ -90,7 +90,7 @@
 <body>
  	<div class="container">
 		<font color=blue>[ProductReviewWrite.jsp]</font> <p>
-	 	<form name="myform" action="productReviewInsert.do" enctype="multipart/form-data" method="post">
+	 	<form name="myform" action="productReviewInsert.do?prid=${prid}" enctype="multipart/form-data" method="post">
 	 	<table class="table table-hover" style="border: 1px solid #D8D8D8;">
 		
 		

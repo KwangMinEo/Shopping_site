@@ -79,7 +79,7 @@ public class ProductReviewController {
 	}//end
 	
 	@RequestMapping("/productReviewInsert.do")
-	public String productR_insert(ProductReviewDTO dto,HttpServletRequest request) {
+	public String productR_insert(ProductReviewDTO dto,HttpServletRequest request,@RequestParam("prid") String prid) {
 		String path=application.getRealPath("/resources/upload");
 		String img=dto.getUpload_f().getOriginalFilename();
 		File file = new File(path, img); 
@@ -88,13 +88,13 @@ public class ProductReviewController {
 		}catch (Exception e) {System.out.println(e);	}		
 		dto.setFile1(img);
 		pdao.dbInsert(dto);
-		return "redirect:/productDetail.do?pid=101a00001";
+		return "redirect:/productDetail.do?pid="+prid;
 	}//end
 
 	@RequestMapping("/productReviewDelete.do")
-	public String quest_insert(@RequestParam("rid") int questnum) {
+	public String quest_insert(@RequestParam("rid") int questnum,@RequestParam("prid") String prid) {
 		pdao.dbDelete(questnum);
-		return "redirect:/productDetail.do?pid=101a00001";
+		return "redirect:/productDetail.do?pid="+prid;
 	}//end
 	
 }//BoardReplyController class END
