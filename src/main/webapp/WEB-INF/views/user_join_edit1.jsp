@@ -26,17 +26,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-<style type="text/css">
-.contents ul {
-	list-style-type: none;
-   	padding-left:0px;
-}
-
-.contents input {
-	width: 100%;
-	border-radius: 5px;
-}
-</style>
 </head>
 
 <script type="text/javascript">
@@ -133,15 +122,7 @@
 		
 	}
 
-//   $(document).ready(function() {
-// 		$('#information_to_hide').hide(); //페이지를 로드할 때 표시할 요소
-// 	});
-
-
-
   </script>
-  
-  
 <body>
 	<!-- main_menu -->
 	<header>
@@ -150,63 +131,27 @@
 		</div>
 	</header>
 
-	<div class="container contents">
-	<div  align="left" style="margin-left: 14%; background-color: #f9f9fe; padding:1%; padding-left:2%; padding-right:2%; border-radius: 0  20px 20px 0;" >
-			<h1 align="center">[${dto.user_id}]님 회원정보 확인 및 수정</h1>
-		<form action="UpdateAF_join.do" method="post" name="userjoin_form">
-			<ul><label  for="exampleInputEmail1">아이디 : ${dto.user_id}</label><br>
-				<li style="display:none">아이디 : <input type="text" name="user_id" id="user_id"
-						class="user_id" value="${dto.user_id}" required
-						oninput="setCustomValidity('')" readonly></td>
-				</li><br>
-				<label  for="exampleInputEmail1">비밀번호 :</label>
-				<li><input type="password" name="user_pwd"
-						id="user_pwd" class="user_pwd" value="${dto.user_pwd}" required
-						oninput="setCustomValidity('')">
-				</li><br>
-				<label  for="exampleInputEmail1">이름 : ${dto.user_name}</label><br>
-				<li style="display:none"><input type="text" name="user_name" id="user_name"
-						class="user_name" value="${dto.user_name}" required
-						oninput="setCustomValidity('')" readonly>
-				</li><br>
-				<label  for="exampleInputEmail1">전화번호 : </label>
-				<li><input type="text" name="user_phone"
-						id="user_phone" class="user_phone" value="${dto.user_phone}"
-						required oninput="setCustomValidity('')">
-				</li><br>
-				<label  for="exampleInputEmail1">주소1 : </label>
-				<li><input type="text" name="user_address1"
-						id="user_address1" class="user_address1"
-						value="${dto.user_address1}" required
-						oninput="setCustomValidity('')">
-				</li><br>
-				<label  for="exampleInputEmail1">주소2 : </label>
-				<li><input type="text" name="user_address2"
-						id="user_address2" class="user_address2"
-						value="${dto.user_address2}" required
-						oninput="setCustomValidity('')">
-				</li><br>
-				<label  for="exampleInputEmail1">이메일 : </label>
-				<li><input type="email" name="user_email"
-						id="user_email" class="Email" value="${dto.user_email}" required
-						oninput="setCustomValidity('')">
-				</li><br>
-				<label  for="exampleInputEmail1">가입일자 : ${dto.user_joindate}
-				</label><br>
-				<label  for="exampleInputEmail1">회원등급 : ${dto.user_level}
-				</label><br>
-			</ul>
-			<div align="center">
-			<button type="submit" class="btn btn-primary" value="Add" name="submit" onclick="chk()"style="width: 32%;">수정</button>
-			<button type="reset" class="btn btn-primary"  id="RESET" style="width: 32%;">취소</button>
-			<a href="Delete_join.do?uid=${dto.user_id}"><button class="btn btn-primary"  style="width: 32%;">회원탈퇴</button>
-			</a>
-			</div>
-		</form>
-		</div>
+ 	 <div class="container">
+ 		<form action="UpdateAF_join.do" method="post" name="userjoin_form">
+			<h1>회원정보 수정</h1>
+			<ul>
+				<li><input type="text" 		name="user_id" 			id="user_id" 		class="user_id" 		value="${dto.user_id}"			required oninput="setCustomValidity('')"	readonly></li>
+				<li><input type="password" 	name="user_pwd" 		id="user_pwd"		class="user_pwd" 		value="${dto.user_pwd}"			required oninput="setCustomValidity('')"></li>
+               	<li><input type="text" 		name="user_name" 		id="user_name"		class="user_name" 		value="${dto.user_name}"		required oninput="setCustomValidity('')"	readonly></li>
+               	<li><input type="text" 		name="user_phone" 		id="user_phone" 	class="user_phone" 		value="${dto.user_phone}"		required oninput="setCustomValidity('')"></li>
+               	<li><input type="text" 		name="user_address1"	id="user_address1" 	class="user_address1" 	value="${dto.user_address1}"	required oninput="setCustomValidity('')"></li>
+               	<li><input type="text" 		name="user_address2" 	id="user_address2" 	class="user_address2" 	value="${dto.user_address2}"	required oninput="setCustomValidity('')"></li>
+               	<li><input type="email" 	name="user_email" 		id="user_email" 	class="Email" 			value="${dto.user_email}"		required oninput="setCustomValidity('')"></li>
+               	<li><button type="submit" value="Add" name="submit" onclick="chk()">Submit</button>
+               </ul>
+        </form>
 	</div>
-
-
-
+	
+	<!-- footer -->
+	<footer>
+		<div id="footer">
+			<c:import url="/footer.do" />
+		</div>
+	</footer>
 </body>
 </html>
