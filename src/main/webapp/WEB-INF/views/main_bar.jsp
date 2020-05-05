@@ -21,20 +21,20 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-$(window).ready(function(){
-	 var sessionCK = "${userId}";
-	if( sessionCK == ""||  sessionCK == "null"|| sessionCK == null){
-		$(document).ready(function(){
-			  $('.user_out').show()
-			  $('.user_in').hide()
-		  });
-	}else {
-		$(document).ready(function(){
-			  $('.user_out').hide()
-			  $('.user_in').show()
-		  });
+	$(window).ready(function() {
+		var sessionCK = "${userId}";
+		if (sessionCK == "" || sessionCK == "null" || sessionCK == null) {
+			$(document).ready(function() {
+				$('.user_out').show()
+				$('.user_in').hide()
+			});
+		} else {
+			$(document).ready(function() {
+				$('.user_out').hide()
+				$('.user_in').show()
+			});
 		}
-});
+	});
 </script>
 </head>
 
@@ -64,19 +64,20 @@ $(window).ready(function(){
 
 				<div class="user_action pull-right">
 					<ul class="user_out">
-						<li class="Cart"><a class="text-secondary" href=""> <i
-								class="fa fa-shopping-cart" aria-hidden="true">장바구니</i>
+						<li class="sign in"><a class="text-secondary" href=""> <i
+								class="fa fa-arrow-right" aria-hidden="true"> 회원가입</i>
 						</a></li> |
-						<li class="login"><a class="text-secondary" href="login.do"> <i
-								class="fa fa-sign-in" aria-hidden="true">로그인</i>
+						<li class="login"><a class="text-secondary" href="login.do">
+								<i class="fa fa-sign-in" aria-hidden="true"> 로그인</i>
 						</a></li>
 					</ul>
 					<ul class="user_in">
-						<li class="Cart"><a class="text-secondary" href=""> <i
-								class="fa fa-shopping-cart" aria-hidden="true">장바구니</i>
+						<li class="membership"><a class="text-secondary"
+							href="my_page.do"> <i class="fa fa-user-circle-o"
+								aria-hidden="true"> 마이페이지</i>
 						</a></li> |
-						<li class="membership"><a class="text-secondary" href="my_page.do">
-								<i class="fa fa-user-circle-o" aria-hidden="true">마이페이지</i>
+						<li class="logout"><a class="text-secondary" href=""> <i
+								class="fa fa-user-circle-o" aria-hidden="true"> 로그아웃</i>
 						</a></li>
 					</ul>
 				</div>
@@ -84,13 +85,21 @@ $(window).ready(function(){
 
 				<!-- 하단메뉴 -->
 				<div class="bottom_menu">
-					<ul>
+					<ul class="b_list">
 						<li><a class="text-secondary" href="">NEW</a></li>
+						<li><a class="text-secondary" href="">BEST</a></li>
 						<li><a class="text-secondary" href="">상의</a></li>
 						<li><a class="text-secondary" href="">하의</a></li>
 						<li><a class="text-secondary" href="">아우터</a></li>
-						<li><a class="text-secondary" href="">잡화</a></li>
+						<li><a class="text-secondary" href="">신발</a></li>
+						<li><a class="text-secondary" href="">가방</a></li>
+						<li><a class="text-secondary" href="">악세사리</a></li>
+						<li class="Cart pull-right"><a class="text-secondary" href="">
+								<i class="fa fa-shopping-cart" aria-hidden="true">장바구니</i>
+						</a></li>
+
 					</ul>
+					
 				</div>
 		</nav>
 	</header>

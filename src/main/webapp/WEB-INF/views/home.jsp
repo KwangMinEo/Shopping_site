@@ -49,31 +49,27 @@
 				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner" role="listbox">
-				<div class="carousel-item active" style="max-height: 600px">
-					<a href=""> <img class="d-block w-100"
-						src="resources/images/musinsa_main_banner3.jpg" alt="First slide">
+				<div class="carousel-item active" style="max-height: 600px;">
+					<a href=""> <img class="d-block center-block<!-- w-100 -->"
+						src="resources/images/Untitled1.png" alt="First slide">
 						<div class="carousel-caption d-block">
-							<span> <img alt=""
-								src="resources/images/musinsa_main_banner_title1.png">
-							</span>
+							<!-- <span> <img alt="" src=""> </span> -->
+						</div>
+					</a>
+				</div>
+				<div class="carousel-item" style="max-height: 600px;">
+					<a href=""> <img class="d-block center-block<!-- w-100 -->"
+						src="resources/images/Untitled2.png" alt="Second slide">
+						<div class="carousel-caption d-block">
+							<!-- <span> <img alt="" src=""> </span> -->
 						</div>
 					</a>
 				</div>
 				<div class="carousel-item" style="max-height: 600px">
 					<a href=""> <img class="d-block w-100"
-						src="resources/images/musinsa_main_banner4.jpg" alt="Second slide">
+						src="resources/images/Untitled1.png" alt="Third slide">
 						<div class="carousel-caption d-block">
-							<span> <img alt=""
-								src="resources/images/musinsa_main_banner_title2.png">
-							</span>
-						</div>
-					</a>
-				</div>
-				<div class="carousel-item" style="max-height: 600px">
-					<a href=""> <img class="d-block w-100"
-						src="resources/images/musinsa_main_banner5.jpg" alt="Third slide">
-						<div class="carousel-caption d-block">
-							<span> <img alt="" src="resources/images/Carrot_logo1.png">
+							<span> <img alt="" src="">
 							</span>
 						</div>
 					</a>
@@ -92,7 +88,7 @@
 	</div>
 
 
-	<div class="container">
+	<div class="container text-center" style="width:100%">
 		<!-- 상단 이미지배너 -->
 		<div class="wrap">
 			<div class="first_wrap">
@@ -115,25 +111,41 @@
 			</div>
 		</div>
 
-		<div class="second_wrap">
+		<div class="second_wrap text-center" style="width:100%">
 			<div class="second_wrap_i 01">
-				<a class="text-secondary" href="productDetail.do?pid=101a00001"> <img alt="1"
-					src="resources/images/101a00001_1.jpg">
+				<a class="text-secondary" href="productDetail.do?pid=101a00001"> 
+				<img alt="1" src="resources/images/101a00001_1.jpg">
+					<br>
+					천연황토로 염색한 줄 알았는데 진실은..
+					<br>
+					9000원
 				</a>
 			</div>
 			<div class="second_wrap_i 02">
 				<a class="text-secondary" href=""> <img alt="1"
 					src="resources/images/1353727_1_big.jpg">
+					<br>
+					이것은 네이비인가 군청인가
+					<br>
+					9900원
 				</a>
 			</div>
 			<div class="second_wrap_i 03">
 				<a class="text-secondary" href=""> <img alt="1"
 					src="resources/images/1353727_1_big.jpg">
+					<br>
+					왠지 아까랑 같은거 같다구요?
+					<br>
+					9990원
 				</a>
 			</div>
 			<div class="second_wrap_i 04">
 				<a class="text-secondary" href=""> <img alt="1"
 					src="resources/images/1353727_1_big.jpg">
+					<br>
+					유감스럽게도 남색이었습니다
+					<br>
+					9999원
 				</a>
 			</div>
 		</div>
