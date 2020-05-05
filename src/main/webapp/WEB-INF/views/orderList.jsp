@@ -35,8 +35,9 @@ transform:scale(1.2);
 </style>	
 </head>
 <body>
-<div class="container">
-
+<div class="container contents">
+	<div  align="left" style="margin-left: 14%; background-color: #f9f9fe; padding:1%; padding-left:2%; padding-right:2%; border-radius: 0  20px 20px 0;" >
+	
 <form name="myform" action="orderInsert.do" method="get" >
 <font size="15" color="blue" >주문/결제</font>
 
@@ -111,6 +112,7 @@ transform:scale(1.2);
   	</tr>
  </table>
  </form>
+ </div>
 </div> 
 </body>
 </html>

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -80,9 +82,10 @@ public class orderController {
 	}// end
 	
 	@RequestMapping("/orderList.do")
-	public String order_list(@RequestParam("oid")String data,Model model){
+	public String order_list(HttpSession session,Model model){
 		//List<orderDTO> product=dao.dbSelectproduct();
-		List<orderDTO> order=dao.dbSelectorder(data);
+		String data = (String)session.getAttribute("userId");
+		List<orderDTO> order=dao.dbSelectorder1(data);
 		System.out.println(data);
 		orderDTO users=dao.dbSelectusers(data);
 		//model.addAttribute("product", product);
