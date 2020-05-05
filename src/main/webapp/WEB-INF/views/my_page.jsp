@@ -45,7 +45,6 @@
 	height: 100%;
 /* 	float: right; */
 	box-sizing: border-box;
-	background: #0ff;
 }
 
 .contents #my_page_header #nav ul {

@@ -8,18 +8,14 @@
 <meta charset="UTF-8">
 <title>main_bar</title>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="./resources/css/Home_css.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
 	$(window).ready(function() {
 		var sessionCK = "${userId}";
@@ -38,32 +34,31 @@
 </script>
 </head>
 
-
 <body>
 
-	<header id="main_menu">
-		<!-- 상단메뉴 -->
-		<nav class="navbar fixed-top navbar-light bg-white">
-			<div class="top_menu">
-				<div class="logo">
-					<a href="home.do"><img alt="MUSINSA"
-						src="./resources/images/musinsa_main_logo2.png"></a>
-				</div>
-				<div class="search">
-					<span class="new_search1">
-						<form action="" method="post" name="search">
-							<fieldset>
-								<input name="search" onkeydown="CheckKey_search();" value=""
-									class="MS_search_word search_top1" /> <a
-									class="text-secondary" href="javascript:search_submit();"><i
-									class="fa fa-search" aria-hidden="true"></i></a>
-							</fieldset>
-						</form>
-					</span>
-				</div>
 
-				<div class="user_action pull-right">
-					<ul class="user_out">
+	<!-- 상단메뉴 -->
+	<div id="main_menu">
+		<div class="top_menu">
+			<a class="logo" href="home.do">
+				<img alt="MUSINSA" src="./resources/images/musinsa_main_logo2.png">
+			</a>
+			<div class="search">
+				<span class="new_search1">
+					<form action="" method="post" name="search">
+						<fieldset class="new_search2">
+							<input name="search" onkeydown="CheckKey_search();" value=""
+								class="MS_search_word search_top1" /> <a class="text-secondary"
+								href="javascript:search_submit();"><i class="fa fa-search"
+								aria-hidden="true"></i></a>
+						</fieldset>
+					</form>
+				</span>
+			</div>
+
+
+			<div class="user_action pull-right">
+				<ul class="user_out">
 						<li class="sign in"><a class="text-secondary" href=""> <i
 								class="fa fa-arrow-right" aria-hidden="true"> 회원가입</i>
 						</a></li> |
@@ -77,32 +72,28 @@
 								aria-hidden="true"> 마이페이지</i>
 						</a></li> |
 						<li class="logout"><a class="text-secondary" href=""> <i
-								class="fa fa-user-circle-o" aria-hidden="true"> 로그아웃</i>
+								class="fa fa-share" aria-hidden="true"> 로그아웃</i>
 						</a></li>
-					</ul>
-				</div>
+			</div>
+		</div>
 
 
-				<!-- 하단메뉴 -->
-				<div class="bottom_menu">
-					<ul class="b_list">
-						<li><a class="text-secondary" href="">NEW</a></li>
-						<li><a class="text-secondary" href="">BEST</a></li>
-						<li><a class="text-secondary" href="">상의</a></li>
-						<li><a class="text-secondary" href="">하의</a></li>
-						<li><a class="text-secondary" href="">아우터</a></li>
-						<li><a class="text-secondary" href="">신발</a></li>
-						<li><a class="text-secondary" href="">가방</a></li>
-						<li><a class="text-secondary" href="">악세사리</a></li>
-						<li class="Cart pull-right"><a class="text-secondary" href="">
-								<i class="fa fa-shopping-cart" aria-hidden="true">장바구니</i>
-						</a></li>
+		<!-- 하단메뉴 -->
+		<div class="bottom_menu">
+			<ul class="b_list">
+				<li><a class="text-secondary" href="">NEW</a></li>
+				<li><a class="text-secondary" href="">BEST</a></li>
+				<li><a class="text-secondary" href="">상의</a></li>
+				<li><a class="text-secondary" href="">하의</a></li>
+				<li><a class="text-secondary" href="">아우터</a></li>
+				<li><a class="text-secondary" href="">신발</a></li>
+				<li><a class="text-secondary" href="">가방</a></li>
+				<li><a class="text-secondary" href="">악세사리</a></li>
+			</ul>
 
-					</ul>
-					
-				</div>
-		</nav>
-	</header>
 
+		</div>
+	</div>
 </body>
+
 </html>
