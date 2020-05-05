@@ -14,6 +14,8 @@
   
         
 </script>
+<link rel="stylesheet" href="./resources/css/Home_css.css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <style type="text/css">
 .scale{
 transform:scale(1);
@@ -35,7 +37,13 @@ transform:scale(1.2);
 </style>	
 </head>
 <body>
-<div class="container">
+	<!-- main_menu -->
+	<header>
+		<div id="main_bar">
+			<c:import url="/main_bar.do" />
+		</div>
+	</header>
+<div class="container contents">
 
 <form name="myform" action="orderInsert.do" method="get" >
 <font size="15" color="blue" >주문/결제</font>

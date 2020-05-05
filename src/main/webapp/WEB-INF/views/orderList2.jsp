@@ -12,6 +12,8 @@
   
         
 </script>
+<link rel="stylesheet" href="./resources/css/Home_css.css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <style type="text/css">
 .scale{
 transform:scale(1);
@@ -32,7 +34,7 @@ transform:scale(1.2);
 </style>	
 </head>
 <body>
-<div class="container">
+<div class="container contents">
 
 <form name="myform" action="#" method="get" >
 <div align="center"><font size="15" color="blue" >주문목록.배송조회</font></div>
