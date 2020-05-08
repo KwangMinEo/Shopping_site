@@ -26,7 +26,7 @@ public class ProductQuestRepController {
 		return "redirect:/productDetail.do?pid=101a00001";
 	}//end
 	
-	@RequestMapping(value="/productquestrep_list.do", method=RequestMethod.GET)
+	@RequestMapping("/productquestrep_list.do")
 	public ModelAndView reply_select(@RequestParam("pqr") int pqr) {
 		ModelAndView mav = new ModelAndView();
 		List<ProductQuestRepDTO> rPQ = rdao.dbSelect(pqr);

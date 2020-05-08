@@ -226,7 +226,7 @@
 
 		<!------   상품 문의, 리뷰 게시판    ------->
 
-		<div class="row row-cols-3 contents" id="product_review">
+		<div class="row  contents" id="product_review">
 			<h2>REVIEW</h2>
 			<c:import url="/productReviewList.do?prid=${prid}" />
 			<br>
@@ -235,7 +235,7 @@
 			<br>
 		</div>
 
-		<div class="row row-cols-3 contents" id="product_question">
+		<div class="row contents" id="product_question">
 			<h2>상품문의</h2>
 			<c:import url="/productQuestList.do?prid=${prid}" />
 			<br>

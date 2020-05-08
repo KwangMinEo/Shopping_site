@@ -48,18 +48,20 @@
 					    <p>
 					    <c:choose> 
 					     	<c:when test="${userId=='admin.master'}">
+					     	
 						    		${bean.content} <p>
 						    	
 						    	<a href="productQuestDelete.do?qqid=${bean.product_quest_num}">[삭제]</a>
 						    	
-						    	  <c:import url="/productquestrep_list.do?pqr=${questnum}" />   
+						    	<c:import url="/productquestrep_list.do?pqr=${bean.product_quest_num}&prid=${prid}" />
+						    	     
 						    				
 						    </c:when>
 						    <c:when test="${questpwd==bean.pwd && questnum==bean.product_quest_num}">
 						    	${bean.content} <p>
 						    	<a href="productQuestOut.do?prid=${prid}">[확인완료]</a><p>
 						    	<a href="productQuestDelete.do?qqid=${bean.product_quest_num}&prid=${prid}">[삭제]</a>
-						    			    	
+						    	<c:import url="/productquestrep_list.do?pqr=${questnum}&prid=${prid}" />
 						    </c:when>	
 						    <c:otherwise>					    
 							    <form action="productQuestPwd.do?prid=${prid}" method="post">
@@ -67,9 +69,7 @@
 								    <input type="password" name="pwd">
 								    <button type="submit" >ok</button>
 							    </form> 
-						    </c:otherwise>
-						   
-					    			     
+						    </c:otherwise>    			     
 					    </c:choose> 
 					    </p>
 					  </div>
@@ -80,8 +80,8 @@
 	    </c:forEach>
 	  </tbody>
 	  
-	  	<!-- 페이징 -->
-	    <tr align="center">
+	 <!-- 페이징 -->
+	 <tr align="center">
 		<td colspan="5">
 			<!-- 이전 --> 
 			<c:if test="${startpage!=1}">

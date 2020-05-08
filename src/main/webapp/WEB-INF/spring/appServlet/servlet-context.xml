@@ -47,6 +47,7 @@
 				<mapping path="/Delete_join.do"/>
 				<mapping path="/zzimInsert.do"/>
 				<mapping path="/order.do"/> 
+				<mapping path="/productReview.do"/> 
 				<beans:ref bean="LoginInterceptio"/>
 			</interceptor>
 		</interceptors>

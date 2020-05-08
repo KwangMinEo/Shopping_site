@@ -38,10 +38,7 @@ public class ProductQuestController {
 		 int start, end; 
 		 int startpage, endpage;  
 		 int temp;	
-		 String sqry="";
-		 String skey="", sval="";
-		 String returnpage=""; 
-		 int Rnumber; 
+		 
 		 
 		 pnum=request.getParameter("pagePQNum");
 		 if(pnum=="" || pnum==null) {
@@ -69,6 +66,7 @@ public class ProductQuestController {
 		model.addAttribute("endpage", endpage);
 		model.addAttribute("pagecount", pagecount);
 		model.addAttribute("prid", prid);
+		
 		model.addAttribute("PD",PD);
 		return "ProductQuestList";
 	}//end

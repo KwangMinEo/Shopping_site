@@ -21,29 +21,30 @@
 <br>
 <form  method="get"  action="questreply.do" >
   <table width="700"  border='0' cellspacing="0">
- 	
- 	<tr>
- 		<td>
- 	 		<input type="hidden"  name="product_quest_num"  value="${questnum}"> 
-	 		<input type="hidden"  name="product_id"  value="kim">
-	 		=============답변===============
- 		</td>
- 	</tr>
- 	
- 	<tr>
- 	  <td>
- 		내용: <textarea  name="content" cols="60" rows=3></textarea>
- 		<input type="submit"  value="게시판댓글저장 "> 
- 	  </td>
- 	</tr>
+  <c:if test="${userId=='admin.master'}">
+		 	<tr>
+		 		<td>
+		 	 		<input type="hidden"  name="product_quest_num"  value="${questnum}"> 
+			 		<input type="hidden"  name="product_id"  value="${prid}">
+			 		=============답변===============
+		 		</td>
+		 	</tr>
+		 	
+		 	<tr>
+		 	  <td>
+		 		내용: <textarea  name="content" cols="60" rows=3></textarea>
+		 		<input type="submit"  value="게시판댓글저장 "> 
+		 	  </td>
+		 	</tr>
+ 	</c:if>
   </table>
  </form>
 
  
  <p>
   <table width="750"  border='0' cellspacing="0">
-   <tr  bgcolor="pink"  height='30'  align="center">
- 	   <td colspan=5>댓글 데이타 내용 표시</td>       
+   <tr  bgcolor="white"  height='30'  align="center">
+ 	   <td colspan=5>관리자 답변</td>       
    </tr>
   <c:forEach var="rdto" items="${rPQ}">
   <tr  
@@ -51,11 +52,13 @@
     onMouseOut="style.background='' "
   >
   	<td width=50> ${rdto.rrn}  </td> 
-  	<td width=50> ${rdto.product_id}  </td> 
-    <td width=100 > ${rdto.product_quest_num}  </td> 
- 	<td width=200 > ${rdto.content} </td>
+  	<td width=50>   </td> 
+    <td width=100 >   </td> 
+ 	<td width=200 ><font color="red"> ${rdto.content}</font> </td>
  	  <td width=250 align="right"> 
+ 	  <c:if test="${userId=='admin.master'}">
  	   <input type="button" onclick="location.href='questreply_delete.do?qrd=${rdto.product_rep_num}'" value="삭제">
+ 	  </c:if>
    
  	 </td>     
   </tr>
