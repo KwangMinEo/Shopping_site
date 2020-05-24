@@ -43,3 +43,13 @@
 * 주문 / 결제<RUD>
 * 주문내역<R>
 * 찜리스트<R>
+
+## 어려웠던점
+* 인터셉터 이후 전 페이지로 이동 구현
+ - String referrer = request.getHeader("Referer");
+    request.getSession().setAttribute("prevPage", referrer);
+    return "login";
+    구현
+
+* 여러 상품리스트 전체 전달하기
+ - ArrayList 구현
